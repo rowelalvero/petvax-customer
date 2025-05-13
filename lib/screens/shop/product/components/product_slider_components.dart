@@ -1,10 +1,14 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductSlider extends StatelessWidget {
   final List<String> productGallaryData;
   final ProductDetailController productController;
 
-  const ProductSlider({super.key, required this.productController, required this.productGallaryData});
+  const ProductSlider(
+      {super.key,
+      required this.productController,
+      required this.productGallaryData});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,12 @@ class ProductSlider extends StatelessWidget {
             reverse: false,
             itemCount: productGallaryData.length,
             itemBuilder: (_, i) {
-              return CachedImageWidget(url: productGallaryData[i].toString(), height: 330, width: Get.width, fit: BoxFit.cover).onTap(() {
+              return CachedImageWidget(
+                      url: productGallaryData[i].toString(),
+                      height: 330,
+                      width: Get.width,
+                      fit: BoxFit.cover)
+                  .onTap(() {
                 if (productGallaryData.isNotEmpty) {
                   ZoomImageScreen(
                     galleryImages: productGallaryData.map((e) => e).toList(),

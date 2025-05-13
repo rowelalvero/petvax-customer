@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class EventListScreenShimmer extends StatelessWidget {
   const EventListScreenShimmer({super.key});

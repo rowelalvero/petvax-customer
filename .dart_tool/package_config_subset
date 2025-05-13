@@ -786,10 +786,6 @@ yaml
 3.4
 file:///C:/Users/updated%204/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.3/
 file:///C:/Users/updated%204/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.3/lib/
-pawlly
-3.3
-file:///C:/Users/updated%204/Downloads/codecanyon-q5IkUL1B-pawlly-allinone-pet-care-solution-in-flutter-laravel/pawlly_app_source_code/customer-app/petvax-app-v2.2.6/
-file:///C:/Users/updated%204/Downloads/codecanyon-q5IkUL1B-pawlly-allinone-pet-care-solution-in-flutter-laravel/pawlly_app_source_code/customer-app/petvax-app-v2.2.6/lib/
 sky_engine
 3.7
 file:///C:/Users/updated%204/flutter/bin/cache/pkg/sky_engine/
@@ -810,4 +806,8 @@ flutter_web_plugins
 3.7
 file:///C:/Users/updated%204/flutter/packages/flutter_web_plugins/
 file:///C:/Users/updated%204/flutter/packages/flutter_web_plugins/lib/
+petvax
+3.3
+file:///C:/petvax_app_source_code/petvax-app/
+file:///C:/petvax_app_source_code/petvax-app/lib/
 2

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});

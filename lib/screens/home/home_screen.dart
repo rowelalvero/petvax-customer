@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/screens/dashboard/dashboard_res_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/screens/dashboard/dashboard_res_model.dart';
+import 'package:petvax/utils/library.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});

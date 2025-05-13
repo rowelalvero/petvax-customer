@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class OrderDetailModel {
   bool status;
   OrderListData data;
@@ -17,7 +18,12 @@ class OrderDetailModel {
       status: json['status'] is bool ? json['status'] : false,
       data: json['data'] is Map
           ? OrderListData.fromJson(json['data'])
-          : OrderListData(orderDetails: OrderDetails(productDetails: CartListData(qty: 0.obs, productVariation: VariationData(inCart: false.obs), productReviewData: ProductReviewDataModel()))),
+          : OrderListData(
+              orderDetails: OrderDetails(
+                  productDetails: CartListData(
+                      qty: 0.obs,
+                      productVariation: VariationData(inCart: false.obs),
+                      productReviewData: ProductReviewDataModel()))),
       message: json['message'] is String ? json['message'] : "",
     );
   }
@@ -98,30 +104,49 @@ class OrderListData {
               ? json['order_code'].toString()
               : "",
       userId: json['user_id'] is int ? json['user_id'] : -1,
-      deliveryStatus: json['delivery_status'] is String ? json['delivery_status'] : "",
-      paymentStatus: json['payment_status'] is String ? json['payment_status'] : "",
-      subTotalAmount: json['sub_total_amount'] is num ? json['sub_total_amount'] : -1,
-      totalTaxAmount: json['total_tax_amount'] is num ? json['total_tax_amount'] : -1,
-      logisticCharge: json['logistic_charge'] is num ? json['logistic_charge'] : -1,
+      deliveryStatus:
+          json['delivery_status'] is String ? json['delivery_status'] : "",
+      paymentStatus:
+          json['payment_status'] is String ? json['payment_status'] : "",
+      subTotalAmount:
+          json['sub_total_amount'] is num ? json['sub_total_amount'] : -1,
+      totalTaxAmount:
+          json['total_tax_amount'] is num ? json['total_tax_amount'] : -1,
+      logisticCharge:
+          json['logistic_charge'] is num ? json['logistic_charge'] : -1,
       totalAmount: json['total_amount'] is num ? json['total_amount'] : -1,
-      paymentMethod: json['payment_method'] is String ? json['payment_method'] : "",
+      paymentMethod:
+          json['payment_method'] is String ? json['payment_method'] : "",
       orderDate: json['order_date'] is String ? json['order_date'] : "",
-      logisticName: json['logistic_name'] is String ? json['logistic_name'] : "",
-      expectedDeliveryDate: json['expected_delivery_date'] is String ? json['expected_delivery_date'] : "",
-      deliveryDays: json['delivery_days'] is String ? json['delivery_days'] : "",
-      deliveryTime: json['delivery_time'] is String ? json['delivery_time'] : "",
+      logisticName:
+          json['logistic_name'] is String ? json['logistic_name'] : "",
+      expectedDeliveryDate: json['expected_delivery_date'] is String
+          ? json['expected_delivery_date']
+          : "",
+      deliveryDays:
+          json['delivery_days'] is String ? json['delivery_days'] : "",
+      deliveryTime:
+          json['delivery_time'] is String ? json['delivery_time'] : "",
       userName: json['user_name'] is String ? json['user_name'] : "",
-      addressLine1: json['address_line_1'] is String ? json['address_line_1'] : "",
-      addressLine2: json['address_line_2'] is String ? json['address_line_2'] : "",
+      addressLine1:
+          json['address_line_1'] is String ? json['address_line_1'] : "",
+      addressLine2:
+          json['address_line_2'] is String ? json['address_line_2'] : "",
       phoneNo: json['phone_no'] is String ? json['phone_no'] : "",
-      alternativePhoneNo: json['alternative_phone_no'] is String ? json['alternative_phone_no'] : "",
+      alternativePhoneNo: json['alternative_phone_no'] is String
+          ? json['alternative_phone_no']
+          : "",
       city: json['city'] is String ? json['city'] : "",
       state: json['state'] is String ? json['state'] : "",
       country: json['country'] is String ? json['country'] : "",
       postalCode: json['postal_code'] is String ? json['postal_code'] : "",
       orderDetails: json['order_details'] is Map
           ? OrderDetails.fromJson(json['order_details'])
-          : OrderDetails(productDetails: CartListData(qty: 0.obs, productVariation: VariationData(inCart: false.obs), productReviewData: ProductReviewDataModel())),
+          : OrderDetails(
+              productDetails: CartListData(
+                  qty: 0.obs,
+                  productVariation: VariationData(inCart: false.obs),
+                  productReviewData: ProductReviewDataModel())),
     );
   }
 
@@ -180,15 +205,23 @@ class OrderDetails {
   factory OrderDetails.fromJson(Map<String, dynamic> json) {
     return OrderDetails(
       vendorId: json['vendor_id'] is int ? json['vendor_id'] : -1,
-      totalTaxAmount: json['total_tax_amount'] is num ? json['total_tax_amount'] : -1,
-      logisticCharge: json['logistic_charge'] is num ? json['logistic_charge'] : -1,
+      totalTaxAmount:
+          json['total_tax_amount'] is num ? json['total_tax_amount'] : -1,
+      logisticCharge:
+          json['logistic_charge'] is num ? json['logistic_charge'] : -1,
       productPrice: json['product_price'] is num ? json['product_price'] : -1,
       totalAmount: json['total_amount'] is num ? json['total_amount'] : -1,
       grandTotal: json['grand_total'] is num ? json['grand_total'] : -1,
       productDetails: json['product_details'] is Map
           ? CartListData.fromJson(json['product_details'])
-          : CartListData(qty: 0.obs, productVariation: VariationData(inCart: false.obs), productReviewData: ProductReviewDataModel()),
-      otherOrderItems: json['other_order_items'] is List ? List<OtherOrderItems>.from(json['other_order_items'].map((x) => OtherOrderItems.fromJson(x))) : [],
+          : CartListData(
+              qty: 0.obs,
+              productVariation: VariationData(inCart: false.obs),
+              productReviewData: ProductReviewDataModel()),
+      otherOrderItems: json['other_order_items'] is List
+          ? List<OtherOrderItems>.from(
+              json['other_order_items'].map((x) => OtherOrderItems.fromJson(x)))
+          : [],
     );
   }
 
@@ -234,14 +267,19 @@ class OtherOrderItems {
       id: json['id'] is int ? json['id'] : -1,
       orderItemId: json['order_item_id'] is int ? json['order_item_id'] : -1,
       userId: json['user_id'] is int ? json['user_id'] : -1,
-      deliveryStatus: json['delivery_status'] is String ? json['delivery_status'] : "",
-      paymentStatus: json['payment_status'] is String ? json['payment_status'] : "",
+      deliveryStatus:
+          json['delivery_status'] is String ? json['delivery_status'] : "",
+      paymentStatus:
+          json['payment_status'] is String ? json['payment_status'] : "",
       productPrice: json['product_price'] is num ? json['product_price'] : -1,
       totalAmount: json['total_amount'] is num ? json['total_amount'] : -1,
       grandTotal: json['grand_total'] is num ? json['grand_total'] : -1,
       productDetails: json['product_details'] is Map
           ? CartListData.fromJson(json['product_details'])
-          : CartListData(qty: 0.obs, productVariation: VariationData(inCart: false.obs), productReviewData: ProductReviewDataModel()),
+          : CartListData(
+              qty: 0.obs,
+              productVariation: VariationData(inCart: false.obs),
+              productReviewData: ProductReviewDataModel()),
     );
   }
 

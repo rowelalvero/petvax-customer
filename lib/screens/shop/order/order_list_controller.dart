@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
-class OrderListController extends GetxController with GetSingleTickerProviderStateMixin {
-  Rx<Future<List<CartListData>>> orderListFuture = Future(() => <CartListData>[]).obs;
+import 'package:petvax/utils/library.dart';
+
+class OrderListController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  Rx<Future<List<CartListData>>> orderListFuture =
+      Future(() => <CartListData>[]).obs;
   RxBool isLoading = false.obs;
   RxBool isLastPage = false.obs;
   RxInt page = 1.obs;
@@ -32,7 +35,10 @@ class OrderListController extends GetxController with GetSingleTickerProviderSta
     )).whenComplete(() => isLoading(false));
   }
 
-  updateDeliveryStatus({required int orderId, required String status, VoidCallback? onUpdateDeliveryStatus}) async {
+  updateDeliveryStatus(
+      {required int orderId,
+      required String status,
+      VoidCallback? onUpdateDeliveryStatus}) async {
     isLoading(true);
     hideKeyBoardWithoutContext();
 

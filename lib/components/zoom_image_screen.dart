@@ -1,6 +1,6 @@
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ZoomImageScreen extends StatefulWidget {
   final int index;

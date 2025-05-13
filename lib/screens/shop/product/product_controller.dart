@@ -1,18 +1,24 @@
 import 'package:get/get.dart';
 import '../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductDetailController extends GetxController {
   RxBool isLoading = false.obs;
   TextEditingController pinCodeCont = TextEditingController();
   RxInt qtyCount = 1.obs;
-  Rx<Future<ProductDetailRes>> productDetailsFuture = Future(() => ProductDetailRes(data: ProductItemData(inWishlist: false.obs))).obs;
-  Rx<ProductDetailRes> productDetailRes = ProductDetailRes(data: ProductItemData(inWishlist: false.obs)).obs;
+  Rx<Future<ProductDetailRes>> productDetailsFuture = Future(
+      () => ProductDetailRes(data: ProductItemData(inWishlist: false.obs))).obs;
+  Rx<ProductDetailRes> productDetailRes =
+      ProductDetailRes(data: ProductItemData(inWishlist: false.obs)).obs;
   RxList<ProductReviewDataModel> allReviewList = RxList();
-  Rx<Future<List<ProductReviewDataModel>>> getreview = Future(() => <ProductReviewDataModel>[]).obs;
-  PageController pageController = PageController(keepPage: true, initialPage: 0);
+  Rx<Future<List<ProductReviewDataModel>>> getreview =
+      Future(() => <ProductReviewDataModel>[]).obs;
+  PageController pageController =
+      PageController(keepPage: true, initialPage: 0);
   int page = 1;
   RxBool isLastPage = false.obs;
-  Rx<VariationData> selectedVariationData = VariationData(inCart: false.obs).obs;
+  Rx<VariationData> selectedVariationData =
+      VariationData(inCart: false.obs).obs;
   RxInt productId = (-1).obs;
   RxBool isAddToCartButtonEnabled = true.obs;
   @override
@@ -34,7 +40,8 @@ class ProductDetailController extends GetxController {
       isLoading(true);
     }
 
-    productDetailsFuture(ShopApi.getProductDetails(productId: productId.value)).then((value) {
+    productDetailsFuture(ShopApi.getProductDetails(productId: productId.value))
+        .then((value) {
       productDetailRes(value);
       if (productDetailRes.value.data.variationData.isNotEmpty) {
         selectedVariationData(productDetailRes.value.data.variationData.first);
@@ -73,8 +80,7 @@ class ProductDetailController extends GetxController {
     }).catchError((error) {
       isLoading(false);
       toast(error.toString());
-    })
-        .whenComplete(() {
+    }).whenComplete(() {
       isLoading(false);
       isAddToCartButtonEnabled(true);
     });

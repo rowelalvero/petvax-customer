@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import '../model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductItemComponents extends StatelessWidget {
   final ProductItemData productListData;
   final bool isFromWishList;
 
-  ProductItemComponents({super.key, required this.productListData, this.isFromWishList = false});
+  ProductItemComponents(
+      {super.key, required this.productListData, this.isFromWishList = false});
 
   final ShopDashboardController shopDashboardController = Get.find();
 
@@ -18,11 +20,15 @@ class ProductItemComponents extends StatelessWidget {
         /// Clear search when redirect to other screen
         if (shopDashboardController.pCont.searchCont.text.trim().isNotEmpty) {
           shopDashboardController.pCont.searchCont.clear();
-          shopDashboardController.pCont.isSearchText(shopDashboardController.pCont.searchCont.text.trim().isNotEmpty);
+          shopDashboardController.pCont.isSearchText(
+              shopDashboardController.pCont.searchCont.text.trim().isNotEmpty);
           shopDashboardController.pCont.handleSearch();
         }
 
-        final isAddedToWishList = await Get.to(() => ProductDetail(), arguments: isFromWishList ? productListData.productId : productListData.id);
+        final isAddedToWishList = await Get.to(() => ProductDetail(),
+            arguments: isFromWishList
+                ? productListData.productId
+                : productListData.id);
         if (isAddedToWishList is bool) {
           productListData.inWishlist(isAddedToWishList);
         }
@@ -39,7 +45,8 @@ class ProductItemComponents extends StatelessWidget {
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: radiusOnly(topLeft: defaultRadius, topRight: defaultRadius),
+                  borderRadius: radiusOnly(
+                      topLeft: defaultRadius, topRight: defaultRadius),
                   child: CachedImageWidget(
                     url: productListData.productImage,
                     width: Get.width,
@@ -51,14 +58,18 @@ class ProductItemComponents extends StatelessWidget {
                   left: 0,
                   top: 0,
                   child: Obx(
-                        () => Container(
+                    () => Container(
                       padding: const EdgeInsets.all(4),
                       decoration: boxDecorationWithShadow(
                         boxShape: BoxShape.rectangle,
                         backgroundColor: secondaryColor,
-                        borderRadius: radiusOnly(topLeft: defaultRadius, bottomRight: 8),
+                        borderRadius:
+                            radiusOnly(topLeft: defaultRadius, bottomRight: 8),
                       ),
-                      child: Marquee(child: Text(locale.value.outOfStock, style: boldTextStyle(size: 10, color: Colors.white))),
+                      child: Marquee(
+                          child: Text(locale.value.outOfStock,
+                              style: boldTextStyle(
+                                  size: 10, color: Colors.white))),
                     ).visible(productListData.stockQty == 0),
                   ),
                 ),
@@ -68,8 +79,9 @@ class ProductItemComponents extends StatelessWidget {
                   child: Obx(() {
                     return GestureDetector(
                       onTap: () {
-
-                        if ((isFromWishList ? Get.find<WishlistController>().isLoading.value : shopDashboardController.isLoading.value)) {
+                        if ((isFromWishList
+                            ? Get.find<WishlistController>().isLoading.value
+                            : shopDashboardController.isLoading.value)) {
                           return;
                         }
 
@@ -78,7 +90,9 @@ class ProductItemComponents extends StatelessWidget {
                             WishlistController wLCont = Get.find();
                             doIfLoggedIn(context, () async {
                               wLCont.isLoading(true);
-                              WishListApis.onTapFavourite(favdata: productListData).whenComplete(() => wLCont.isLoading(false));
+                              WishListApis.onTapFavourite(
+                                      favdata: productListData)
+                                  .whenComplete(() => wLCont.isLoading(false));
                             });
                           } catch (e) {
                             log('wLCont = Get.find(); E: $e');
@@ -86,7 +100,10 @@ class ProductItemComponents extends StatelessWidget {
                         } else {
                           doIfLoggedIn(context, () async {
                             shopDashboardController.isLoading(true);
-                            WishListApis.onTapFavourite(favdata: productListData).whenComplete(() => shopDashboardController.isLoading(false));
+                            WishListApis.onTapFavourite(
+                                    favdata: productListData)
+                                .whenComplete(() =>
+                                    shopDashboardController.isLoading(false));
                           });
                         }
                       },
@@ -97,36 +114,51 @@ class ProductItemComponents extends StatelessWidget {
                           backgroundColor: context.cardColor,
                         ),
                         child: productListData.inWishlist.value
-                            ? const Icon(Icons.favorite, size: 15, color: redColor)
+                            ? const Icon(Icons.favorite,
+                                size: 15, color: redColor)
                             : Icon(
-                          Icons.favorite,
-                          size: 15,
-                          color: textSecondaryColorGlobal,
-                        ),
+                                Icons.favorite,
+                                size: 15,
+                                color: textSecondaryColorGlobal,
+                              ),
                       ),
                     );
                   }),
                 ),
-
               ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(isFromWishList ? productListData.productName : productListData.name, style: primaryTextStyle(size: 12), maxLines: 1, overflow: TextOverflow.ellipsis),
+                Text(
+                    isFromWishList
+                        ? productListData.productName
+                        : productListData.name,
+                    style: primaryTextStyle(size: 12),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis),
                 6.height,
                 Marquee(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (productListData.isDiscount) PriceWidget(price: productListData.variationData.validate().first.discountedProductPrice),
+                      if (productListData.isDiscount)
+                        PriceWidget(
+                            price: productListData.variationData
+                                .validate()
+                                .first
+                                .discountedProductPrice),
                       if (productListData.isDiscount) 4.width,
                       PriceWidget(
-                        price: productListData.variationData.first.taxIncludeProductPrice,
-                        isLineThroughEnabled: productListData.isDiscount ? true : false,
+                        price: productListData
+                            .variationData.first.taxIncludeProductPrice,
+                        isLineThroughEnabled:
+                            productListData.isDiscount ? true : false,
                         isBoldText: productListData.isDiscount ? false : true,
                         size: productListData.isDiscount ? 12 : 16,
-                        color: productListData.isDiscount ? textSecondaryColorGlobal : null,
+                        color: productListData.isDiscount
+                            ? textSecondaryColorGlobal
+                            : null,
                       ).visible(productListData.variationData.isNotEmpty),
                     ],
                   ),
@@ -142,13 +174,18 @@ class ProductItemComponents extends StatelessWidget {
                       ),
                       Text(
                         productListData.soldBy,
-                        style: primaryTextStyle(fontFamily: fontFamilyFontWeight600, size: 12, color: secondaryColor),
+                        style: primaryTextStyle(
+                            fontFamily: fontFamilyFontWeight600,
+                            size: 12,
+                            color: secondaryColor),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
-                ).paddingOnly(top: 6).visible(productListData.soldBy.isNotEmpty && !(productListData.soldBy == UNKNOWN)),
+                ).paddingOnly(top: 6).visible(
+                    productListData.soldBy.isNotEmpty &&
+                        !(productListData.soldBy == UNKNOWN)),
                 6.height,
               ],
             ).paddingAll(16),

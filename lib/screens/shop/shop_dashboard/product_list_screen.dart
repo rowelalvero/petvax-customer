@@ -1,13 +1,14 @@
 import 'package:get/get.dart';
 import 'model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ProductListScreen extends StatelessWidget {
   final String? title;
 
   ProductListScreen({super.key, this.title});
 
-  final ProductListController productListController = Get.put(ProductListController());
+  final ProductListController productListController =
+      Get.put(ProductListController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +46,15 @@ class ProductListScreen extends StatelessWidget {
               listAnimationType: ListAnimationType.None,
               onNextPage: () async {
                 if (!productListController.isLastPage.value) {
-                  productListController.page(productListController.page.value + 1);
+                  productListController
+                      .page(productListController.page.value + 1);
                   productListController.init();
                 }
               },
               onSwipeRefresh: () async {
                 productListController.page(1);
-                return await productListController.init(isFromSwipRefresh: true);
+                return await productListController.init(
+                    isFromSwipRefresh: true);
               },
               children: [
                 AnimatedWrap(
@@ -59,10 +62,14 @@ class ProductListScreen extends StatelessWidget {
                   spacing: 16,
                   runSpacing: 16,
                   listAnimationType: ListAnimationType.FadeIn,
-                  fadeInConfiguration: FadeInConfiguration(duration: const Duration(seconds: 2)),
-                  scaleConfiguration: ScaleConfiguration(duration: const Duration(milliseconds: 400), delay: const Duration(milliseconds: 50)),
+                  fadeInConfiguration:
+                      FadeInConfiguration(duration: const Duration(seconds: 2)),
+                  scaleConfiguration: ScaleConfiguration(
+                      duration: const Duration(milliseconds: 400),
+                      delay: const Duration(milliseconds: 50)),
                   itemBuilder: (context, index) {
-                    return Obx(() => ProductItemComponents(productListData: productList[index]));
+                    return Obx(() => ProductItemComponents(
+                        productListData: productList[index]));
                   },
                 ),
               ],

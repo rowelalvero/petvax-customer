@@ -1,7 +1,7 @@
-import 'package:pawlly/screens/pet_sitter/pet_sitter_model.dart';
+import 'package:petvax/screens/pet_sitter/pet_sitter_model.dart';
 
 import '../shop/shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class DashboardRes {
   bool status;

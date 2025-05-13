@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class FeaturedProductHomeComponentShimmer extends StatelessWidget {
   const FeaturedProductHomeComponentShimmer({Key? key}) : super(key: key);

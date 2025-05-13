@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../utils/local_storage.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class EditUserProfileController extends GetxController {
   //Constructor region

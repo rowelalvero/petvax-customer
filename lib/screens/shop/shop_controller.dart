@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:pawlly/screens/shop/model/category_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/screens/shop/model/category_model.dart';
+import 'package:petvax/utils/library.dart';
+
 class ShopController extends GetxController {
   Rx<Future<List<ShopModel>>> getShop = Future(() => <ShopModel>[]).obs;
   RxList<ShopModel> shopList = RxList();

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:pawlly/screens/shop/shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/screens/shop/shop_dashboard/model/product_list_response.dart';
+import 'package:petvax/utils/library.dart';
+
 class BestSellerComponents extends StatelessWidget {
   final List<ProductItemData> bestSellerProductList;
 
@@ -18,7 +19,9 @@ class BestSellerComponents extends StatelessWidget {
           list: bestSellerProductList,
           onTap: () {
             hideKeyboard(context);
-            Get.to(() => ProductListScreen(title: locale.value.bestSellerProduct), arguments: ProductStatusModel(isBestSeller: "1"));
+            Get.to(
+                () => ProductListScreen(title: locale.value.bestSellerProduct),
+                arguments: ProductStatusModel(isBestSeller: "1"));
           },
         ).paddingOnly(left: 16, right: 8),
         8.height,
@@ -29,7 +32,8 @@ class BestSellerComponents extends StatelessWidget {
           itemCount: bestSellerProductList.take(6).length,
           listAnimationType: ListAnimationType.FadeIn,
           itemBuilder: (_, index) {
-            return ProductItemComponents(productListData: bestSellerProductList[index]);
+            return ProductItemComponents(
+                productListData: bestSellerProductList[index]);
           },
         ).paddingOnly(top: 10, left: 16, right: 16, bottom: 16)
       ],

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class BestSellerComponentsShimmer extends StatelessWidget {
   const BestSellerComponentsShimmer({Key? key}) : super(key: key);
 
@@ -13,8 +14,10 @@ class BestSellerComponentsShimmer extends StatelessWidget {
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ShimmerWidget(padding: EdgeInsets.symmetric(horizontal: 48, vertical: 8)),
-              ShimmerWidget(padding: EdgeInsets.symmetric(horizontal: 36, vertical: 8)),
+              ShimmerWidget(
+                  padding: EdgeInsets.symmetric(horizontal: 48, vertical: 8)),
+              ShimmerWidget(
+                  padding: EdgeInsets.symmetric(horizontal: 36, vertical: 8)),
             ],
           ).paddingSymmetric(horizontal: 16),
         ),

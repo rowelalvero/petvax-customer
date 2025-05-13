@@ -1,5 +1,5 @@
 import 'package:shimmer/shimmer.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ShimmerWidget extends StatelessWidget {
   final double? height;

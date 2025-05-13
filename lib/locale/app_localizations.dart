@@ -4,7 +4,7 @@ import 'language_en.dart';
 import 'language_fr.dart';
 import 'language_hi.dart';
 import 'languages.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class AppLocalizations extends LocalizationsDelegate<BaseLanguage> {
   const AppLocalizations();

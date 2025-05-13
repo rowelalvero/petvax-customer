@@ -1,7 +1,7 @@
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:googleapis/calendar/v3.dart';
 import '../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class PayStackService {
   PaystackPlugin paystackPlugin = PaystackPlugin();

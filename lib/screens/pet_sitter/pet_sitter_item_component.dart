@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'pet_sitter_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class PetSitterItemComponent extends StatelessWidget {
   final PetSitterItem petSitter;

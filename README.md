@@ -1,4 +1,4 @@
-# Pawlly Flutter App
+# Petvax Flutter App
 
 ## Features
 

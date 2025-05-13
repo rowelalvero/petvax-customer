@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 OrderPaymentController orderPaymentController = OrderPaymentController();
 
 class OrderPaymentController {
@@ -33,25 +34,35 @@ class OrderPaymentController {
             Get.back();
             if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_STRIPE) {
               payWithStripe();
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_RAZORPAY) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_RAZORPAY) {
               payWithRazorPay();
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_PAYSTACK) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_PAYSTACK) {
               payWithPayStack();
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_FLUTTER_WAVE) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_FLUTTER_WAVE) {
               payWithFlutterWave(context);
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_PAYPAL) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_PAYPAL) {
               payWithPaypal(context);
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_AIRTEL) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_AIRTEL) {
               payWithAirtelMoney(context);
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_PHONEPE) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_PHONEPE) {
               payWithPhonepe(context);
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_MIDTRANS) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_MIDTRANS) {
               payWithMidtrans();
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_SADAD) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_SADAD) {
               payWithSadad(context);
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_CINETPAY) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_CINETPAY) {
               payWithCinetPay(context);
-            } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_CASH) {
+            } else if (paymentOption.value ==
+                PaymentMethods.PAYMENT_METHOD_CASH) {
               payWithCash();
             }
           },
@@ -60,14 +71,16 @@ class OrderPaymentController {
     );
   }
 
-  void payWithSelectedOption(BuildContext context, {bool isCashPayment = true}) {
+  void payWithSelectedOption(BuildContext context,
+      {bool isCashPayment = true}) {
     if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_STRIPE) {
       payWithStripe();
     } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_RAZORPAY) {
       payWithRazorPay();
     } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_PAYSTACK) {
       payWithPayStack();
-    } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_FLUTTER_WAVE) {
+    } else if (paymentOption.value ==
+        PaymentMethods.PAYMENT_METHOD_FLUTTER_WAVE) {
       payWithFlutterWave(context);
     } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_PAYPAL) {
       payWithPaypal(context);
@@ -81,7 +94,8 @@ class OrderPaymentController {
       payWithSadad(context);
     } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_CINETPAY) {
       payWithCinetPay(context);
-    } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_CASH && isCashPayment) {
+    } else if (paymentOption.value == PaymentMethods.PAYMENT_METHOD_CASH &&
+        isCashPayment) {
       payWithCash();
     }
   }
@@ -111,7 +125,9 @@ class OrderPaymentController {
       },
       totalAmount: amount.validate(),
       bookingId: 0,
-      isTestMode: appConfigs.value.flutterwavePay.flutterwavePublickey.toLowerCase().contains("test"),
+      isTestMode: appConfigs.value.flutterwavePay.flutterwavePublickey
+          .toLowerCase()
+          .contains("test"),
       onComplete: (res) {
         placeOrder(
           paymentType: PaymentMethods.PAYMENT_METHOD_FLUTTER_WAVE,
@@ -285,11 +301,17 @@ class OrderPaymentController {
   }
 
   payWithCash() async {
-    placeOrder(paymentType: PaymentMethods.PAYMENT_METHOD_CASH, txnId: "", paymentStatus: PaymentStatus.pending);
+    placeOrder(
+        paymentType: PaymentMethods.PAYMENT_METHOD_CASH,
+        txnId: "",
+        paymentStatus: PaymentStatus.pending);
   }
 
   ///SHOP MODULE PLACE ORDER API
-  void placeOrder({required String txnId, required String paymentType, required String paymentStatus}) {
+  void placeOrder(
+      {required String txnId,
+      required String paymentType,
+      required String paymentStatus}) {
     log('PAYMENTSTATUS: $paymentStatus');
     hideKeyBoardWithoutContext();
     if (placeOrderReq == null) return;
@@ -304,7 +326,10 @@ class OrderPaymentController {
       log('ORDERLISTSCREEN:placeOrderAPI ');
       toast(value.message);
       cartItemCount(0);
-      Get.offUntil(GetPageRoute(page: () => NewOrderScreen()), (route) => route.isFirst || route.settings.name == '/$DashboardScreen');
+      Get.offUntil(
+          GetPageRoute(page: () => NewOrderScreen()),
+          (route) =>
+              route.isFirst || route.settings.name == '/$DashboardScreen');
     }).catchError((e) {
       toast(e.toString(), print: true);
     }).whenComplete(() => isLoading(false));

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class OrderDetailScreenShimmer extends StatelessWidget {
   const OrderDetailScreenShimmer({Key? key}) : super(key: key);
 
@@ -8,7 +9,9 @@ class OrderDetailScreenShimmer extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ShimmerWidget(padding: EdgeInsets.symmetric(horizontal: 48, vertical: 8)).paddingRight(120),
+        const ShimmerWidget(
+                padding: EdgeInsets.symmetric(horizontal: 48, vertical: 8))
+            .paddingRight(120),
         16.height,
         Stack(
           alignment: Alignment.center,
@@ -31,11 +34,13 @@ class OrderDetailScreenShimmer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const ShimmerWidget(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       ).expand(flex: 3),
                       const Spacer(),
                       const ShimmerWidget(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       ).expand(flex: 3)
                     ],
                   ).paddingSymmetric(horizontal: 12, vertical: 2),
@@ -72,7 +77,8 @@ class OrderDetailScreenShimmer extends StatelessWidget {
                     children: List.generate(
                       3,
                       (index) => const ShimmerWidget(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       ).paddingSymmetric(horizontal: 16, vertical: 4),
                     ),
                   ).expand()
@@ -81,7 +87,8 @@ class OrderDetailScreenShimmer extends StatelessWidget {
               ShimmerWidget(
                 baseColor: shimmerLightBaseColor,
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   padding: const EdgeInsets.all(24),
                   decoration: boxDecorationDefault(),
                 ),

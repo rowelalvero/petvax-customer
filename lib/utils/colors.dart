@@ -1,4 +1,5 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 const primaryColor = Color(0xFF9D67EF);
 const secondaryColor = Color(0xFFFD866E);
 const lightPrimaryColor = Color(0xFFF6F0FF);

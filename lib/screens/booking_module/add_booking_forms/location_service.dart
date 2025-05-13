@@ -2,7 +2,7 @@
 
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 Future<Position> getUserLocationPosition() async {
   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();

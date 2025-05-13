@@ -3,7 +3,7 @@ import 'package:uuid/uuid.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import '../../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class AirtelMoneyDialog extends StatefulWidget {
   final String reference;

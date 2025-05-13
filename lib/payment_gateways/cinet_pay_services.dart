@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:cinetpay/cinetpay.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class CinetPayServices {
   num totalAmount;

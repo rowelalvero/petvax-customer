@@ -1,4 +1,5 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ViewAllLabel extends StatelessWidget {
   final String label;
   final String? trailingText;
@@ -8,14 +9,25 @@ class ViewAllLabel extends StatelessWidget {
   final bool isShowAll;
   final Color? trailingTextColor;
 
-  const ViewAllLabel({super.key, required this.label, this.onTap, this.labelSize, this.list, this.isShowAll = true, this.trailingText, this.trailingTextColor});
+  const ViewAllLabel(
+      {super.key,
+      required this.label,
+      this.onTap,
+      this.labelSize,
+      this.list,
+      this.isShowAll = true,
+      this.trailingText,
+      this.trailingTextColor});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: primaryTextStyle(fontFamily: fontFamilyBoldGlobal, size: labelSize ?? Constants.labelTextSize)),
+        Text(label,
+            style: primaryTextStyle(
+                fontFamily: fontFamilyBoldGlobal,
+                size: labelSize ?? Constants.labelTextSize)),
         if (isShowAll)
           TextButton(
             onPressed: (list == null ? true : isViewAllVisible(list!))
@@ -23,7 +35,12 @@ class ViewAllLabel extends StatelessWidget {
                     onTap?.call();
                   }
                 : null,
-            child: (list == null ? true : isViewAllVisible(list!)) ? Text(trailingText ?? locale.value.viewAll, style: secondaryTextStyle(color: trailingTextColor ?? context.primaryColor, size: 12)) : const SizedBox(),
+            child: (list == null ? true : isViewAllVisible(list!))
+                ? Text(trailingText ?? locale.value.viewAll,
+                    style: secondaryTextStyle(
+                        color: trailingTextColor ?? context.primaryColor,
+                        size: 12))
+                : const SizedBox(),
           )
         else
           46.height,

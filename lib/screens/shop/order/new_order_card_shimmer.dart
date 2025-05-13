@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class NewOrderCardShimmer extends StatelessWidget {
   const NewOrderCardShimmer({Key? key}) : super(key: key);
 
@@ -17,7 +18,9 @@ class NewOrderCardShimmer extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(left: 16),
                   padding: const EdgeInsets.all(42),
-                  decoration: boxDecorationDefault(border: const Border(top: BorderSide(color: Colors.transparent))),
+                  decoration: boxDecorationDefault(
+                      border: const Border(
+                          top: BorderSide(color: Colors.transparent))),
                 ),
               ),
               Column(
@@ -28,8 +31,11 @@ class NewOrderCardShimmer extends StatelessWidget {
                     children: List.generate(
                       3,
                       (index) => ShimmerWidget(
-                        backgroundColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        backgroundColor: isDarkMode.value
+                            ? shimmerDarkBaseColor
+                            : shimmerLightBaseColor,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                       ).paddingSymmetric(horizontal: 16, vertical: 4),
                     ),
                   ),
@@ -54,7 +60,8 @@ class NewOrderCardShimmer extends StatelessWidget {
                 width: 100,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 decoration: boxDecorationDefault(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(defaultRadius)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(defaultRadius)),
                 ),
               ),
             ),
@@ -68,7 +75,8 @@ class NewOrderCardShimmer extends StatelessWidget {
                 width: 100,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 decoration: boxDecorationDefault(
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(defaultRadius)),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(defaultRadius)),
                 ),
               ),
             ),

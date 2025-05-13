@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Pawlly</string>
+	<string>Petvax</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>pawlly_customer</string>
+	<string>petvax_customer</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -38,19 +38,19 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Pawlly app requires access to the Camera to upload your profile photo.</string>
+	<string>Petvax app requires access to the Camera to upload your profile photo.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Pawlly app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<string>Petvax app requires address permission access to get the current location of the user instead of typing address manually. </string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Pawlly app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<string>Petvax app requires address permission access to get the current location of the user instead of typing address manually. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Pawlly app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<string>Petvax app requires address permission access to get the current location of the user instead of typing address manually. </string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Pawlly app requires access to microphone when you will be used to record your speech at time of  press the "Mic" button.</string>
+	<string>Petvax app requires access to microphone when you will be used to record your speech at time of  press the "Mic" button.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Pawlly app requires access to the photo library to upload your profile photo.</string>
+	<string>Petvax app requires access to the photo library to upload your profile photo.</string>
 	<key>Privacy-Location Usage Description</key>
-	<string>Pawlly app requires address permission access to get the current location of the user instead of typing address manually. </string>
+	<string>Petvax app requires address permission access to get the current location of the user instead of typing address manually. </string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>

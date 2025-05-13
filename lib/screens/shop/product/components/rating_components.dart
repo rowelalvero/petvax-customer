@@ -1,17 +1,24 @@
 import 'package:get/get.dart';
 import '../../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class RatingComponents extends StatelessWidget {
   final List<ProductReviewDataModel> reviewDetails;
   final ProductItemData productReviewData;
   final ProductDetailController productController;
 
-  const RatingComponents({super.key, required this.productController, required this.reviewDetails, required this.productReviewData});
+  const RatingComponents(
+      {super.key,
+      required this.productController,
+      required this.reviewDetails,
+      required this.productReviewData});
 
   @override
   Widget build(BuildContext context) {
     if (productReviewData.productReview.validate().isEmpty) {
-      return Text(locale.value.noRatingsYet, style: primaryTextStyle(fontFamily: fontFamilyBoldGlobal)).paddingOnly(left: 16, right: 16, top: 10);
+      return Text(locale.value.noRatingsYet,
+              style: primaryTextStyle(fontFamily: fontFamilyBoldGlobal))
+          .paddingOnly(left: 16, right: 16, top: 10);
     }
 
     return Column(
@@ -21,7 +28,9 @@ class RatingComponents extends StatelessWidget {
             label: locale.value.ratingAndReviews,
             onTap: () {
               productController.init();
-              Get.to(() => AllReviewProductComponents(productId: productReviewData.id, productController: productController));
+              Get.to(() => AllReviewProductComponents(
+                  productId: productReviewData.id,
+                  productController: productController));
             }),
         Container(
           decoration: boxDecorationDefault(color: context.cardColor),
@@ -29,18 +38,22 @@ class RatingComponents extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               16.height,
-              Text(' ${locale.value.totalReviewsAndRatings} : ${productReviewData.ratingCount.validate()}', style: secondaryTextStyle()),
+              Text(
+                  ' ${locale.value.totalReviewsAndRatings} : ${productReviewData.ratingCount.validate()}',
+                  style: secondaryTextStyle()),
               4.height,
               Row(
                 children: [
-                  Text('${productReviewData.rating.validate()}', style: primaryTextStyle(size: 30)),
+                  Text('${productReviewData.rating.validate()}',
+                      style: primaryTextStyle(size: 30)),
                   8.width,
                   RatingBarWidget(
                     onRatingChanged: (rating) {
                       //
                     },
                     disable: true,
-                    activeColor: getRatingBarColor(productReviewData.rating.validate().toInt()),
+                    activeColor: getRatingBarColor(
+                        productReviewData.rating.validate().toInt()),
                     inActiveColor: ratingBarColor,
                     rating: productReviewData.rating.validate().toDouble(),
                     size: 20,
@@ -63,26 +76,44 @@ class RatingComponents extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 4),
                                 alignment: Alignment.center,
-                                decoration: boxDecorationWithRoundedCorners(backgroundColor: context.scaffoldBackgroundColor),
+                                decoration: boxDecorationWithRoundedCorners(
+                                    backgroundColor:
+                                        context.scaffoldBackgroundColor),
                                 child: TextIcon(
                                   text: reviewData.rating.validate().toString(),
                                   edgeInsets: const EdgeInsets.only(left: 0),
-                                  textStyle: boldTextStyle(size: 14, color: primaryColor),
-                                  prefix: Icon(Icons.star, size: 10, color: getRatingBarColor(reviewData.rating.validate().toInt())),
+                                  textStyle: boldTextStyle(
+                                      size: 14, color: primaryColor),
+                                  prefix: Icon(Icons.star,
+                                      size: 10,
+                                      color: getRatingBarColor(reviewData.rating
+                                          .validate()
+                                          .toInt())),
                                 ),
                               ),
                               8.width,
-                              Marquee(child: Text(reviewData.userName.validate(), style: primaryTextStyle(size: 14))).flexible(),
+                              Marquee(
+                                      child: Text(
+                                          reviewData.userName.validate(),
+                                          style: primaryTextStyle(size: 14)))
+                                  .flexible(),
                             ],
                           ).expand(),
                           8.width,
-                          Text(reviewData.createdAt.validate().dateInyyyyMMddHHmmFormat.timeAgoWithLocalization, style: secondaryTextStyle()),
+                          Text(
+                              reviewData.createdAt
+                                  .validate()
+                                  .dateInyyyyMMddHHmmFormat
+                                  .timeAgoWithLocalization,
+                              style: secondaryTextStyle()),
                         ],
                       ),
                       14.height,
-                      ReadMoreText(reviewData.reviewMsg.validate(), style: boldTextStyle(size: 12)),
+                      ReadMoreText(reviewData.reviewMsg.validate(),
+                          style: boldTextStyle(size: 12)),
                       16.height,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,9 +121,13 @@ class RatingComponents extends StatelessWidget {
                           AnimatedWrap(
                             spacing: 10,
                             runSpacing: 10,
-                            itemCount: reviewData.reviewGallary.validate().take(3).length,
+                            itemCount: reviewData.reviewGallary
+                                .validate()
+                                .take(3)
+                                .length,
                             itemBuilder: (ctx, index) {
-                              ReviewGallaryData galleryData = reviewData.reviewGallary.validate()[index];
+                              ReviewGallaryData galleryData =
+                                  reviewData.reviewGallary.validate()[index];
                               return CachedImageWidget(
                                 url: galleryData.fullUrl.validate(),
                                 width: 45,
@@ -102,7 +137,10 @@ class RatingComponents extends StatelessWidget {
                               ).onTap(() {
                                 if (galleryData.fullUrl.validate().isNotEmpty) {
                                   ZoomImageScreen(
-                                    galleryImages: reviewData.reviewGallary.validate().map((e) => e.fullUrl.validate()).toList(),
+                                    galleryImages: reviewData.reviewGallary
+                                        .validate()
+                                        .map((e) => e.fullUrl.validate())
+                                        .toList(),
                                     index: index,
                                   ).launch(context);
                                 }
@@ -116,16 +154,24 @@ class RatingComponents extends StatelessWidget {
                                 children: [
                                   IconButton(
                                     padding: EdgeInsets.zero,
-                                    icon: reviewData.isUserLike == 1 ? const Icon(Icons.thumb_up_alt_rounded, size: 15, color: primaryColor) : const Icon(Icons.thumb_up_alt_outlined, size: 16),
+                                    icon: reviewData.isUserLike == 1
+                                        ? const Icon(Icons.thumb_up_alt_rounded,
+                                            size: 15, color: primaryColor)
+                                        : const Icon(
+                                            Icons.thumb_up_alt_outlined,
+                                            size: 16),
                                     onPressed: () async {
                                       /// Review Like Api
                                       if (reviewData.isUserLike != 1) {
                                         Map req = {
-                                          ProductModelKey.reviewId: reviewData.id,
+                                          ProductModelKey.reviewId:
+                                              reviewData.id,
                                           ProductModelKey.isLike: 1,
                                         };
                                         doIfLoggedIn(context, () async {
-                                          await ShopApi.addReviewLikeOrDislike(req).then((value) {
+                                          await ShopApi.addReviewLikeOrDislike(
+                                                  req)
+                                              .then((value) {
                                             toast(locale.value.thanksForVoting);
                                           }).catchError((error) {
                                             toast(error.toString());
@@ -135,7 +181,8 @@ class RatingComponents extends StatelessWidget {
                                       }
                                     },
                                   ),
-                                  Text('${reviewData.reviewLikes}', style: secondaryTextStyle()),
+                                  Text('${reviewData.reviewLikes}',
+                                      style: secondaryTextStyle()),
                                 ],
                               ),
                               4.width,
@@ -143,17 +190,27 @@ class RatingComponents extends StatelessWidget {
                                 children: [
                                   IconButton(
                                     padding: EdgeInsets.zero,
-                                    icon: reviewData.isUserDislike == 1 ? const Icon(Icons.thumb_down_alt_rounded, size: 15, color: primaryColor) : const Icon(Icons.thumb_down_alt_outlined, size: 16),
+                                    icon: reviewData.isUserDislike == 1
+                                        ? const Icon(
+                                            Icons.thumb_down_alt_rounded,
+                                            size: 15,
+                                            color: primaryColor)
+                                        : const Icon(
+                                            Icons.thumb_down_alt_outlined,
+                                            size: 16),
                                     onPressed: () async {
                                       /// Review DisLike Api
                                       if (reviewData.isUserDislike != 1) {
                                         Map req = {
-                                          ProductModelKey.reviewId: reviewData.id,
+                                          ProductModelKey.reviewId:
+                                              reviewData.id,
                                           ProductModelKey.isDislike: 1,
                                         };
 
                                         doIfLoggedIn(context, () async {
-                                          await ShopApi.addReviewLikeOrDislike(req).then((value) {
+                                          await ShopApi.addReviewLikeOrDislike(
+                                                  req)
+                                              .then((value) {
                                             toast(locale.value.thanksForVoting);
                                           }).catchError((error) {
                                             toast(error.toString());
@@ -163,7 +220,8 @@ class RatingComponents extends StatelessWidget {
                                       }
                                     },
                                   ),
-                                  Text('${reviewData.reviewDislikes}', style: secondaryTextStyle()),
+                                  Text('${reviewData.reviewDislikes}',
+                                      style: secondaryTextStyle()),
                                 ],
                               ),
                             ],

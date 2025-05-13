@@ -6,12 +6,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pawlly/locale/language_en.dart';
+import 'package:petvax/locale/language_en.dart';
 import 'configs.dart';
 import 'locale/app_localizations.dart';
 import 'locale/languages.dart';
 import 'utils/local_storage.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: firebaseConfig);
   log('${FirebaseTopicConst.notificationDataKey} : ${message.data}');
@@ -27,16 +28,20 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   await Firebase.initializeApp(options: firebaseConfig).then((value) {
     PushNotificationService().setupFirebaseMessaging();
-    if (kReleaseMode) FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    if (kReleaseMode)
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
   }).catchError(onError);
   // locale.value.LanguageList = languageList();
 
   await GetStorage.init();
   //
-  fontFamilyPrimaryGlobal = GoogleFonts.beVietnamPro(fontWeight: FontWeight.w500).fontFamily;
+  fontFamilyPrimaryGlobal =
+      GoogleFonts.beVietnamPro(fontWeight: FontWeight.w500).fontFamily;
   textPrimarySizeGlobal = 14;
   textPrimaryColorGlobal = primaryTextColor;
-  fontFamilySecondaryGlobal = GoogleFonts.beVietnamPro(fontWeight: FontWeight.w400).fontFamily;
+  fontFamilySecondaryGlobal =
+      GoogleFonts.beVietnamPro(fontWeight: FontWeight.w400).fontFamily;
   textSecondarySizeGlobal = 12;
   textSecondaryColorGlobal = secondaryTextColor;
   //
@@ -51,14 +56,18 @@ void main() async {
 
   await initialize(aLocaleLanguageList: languageList());
 
-  selectedLanguageCode(getValueFromLocal(SELECTED_LANGUAGE_CODE) ?? DEFAULT_LANGUAGE);
-  BaseLanguage temp = await const AppLocalizations().load(Locale(selectedLanguageCode.value));
+  selectedLanguageCode(
+      getValueFromLocal(SELECTED_LANGUAGE_CODE) ?? DEFAULT_LANGUAGE);
+  BaseLanguage temp =
+      await const AppLocalizations().load(Locale(selectedLanguageCode.value));
   locale = temp.obs;
-  locale.value = await const AppLocalizations().load(Locale(selectedLanguageCode.value));
+  locale.value =
+      await const AppLocalizations().load(Locale(selectedLanguageCode.value));
 
   Firebase.initializeApp(options: firebaseConfig).then((value) {
     if (kReleaseMode) {
-      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
     }
   });
 
@@ -83,7 +92,8 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          localeResolutionCallback: (locale, supportedLocales) => Locale(selectedLanguageCode.value),
+          localeResolutionCallback: (locale, supportedLocales) =>
+              Locale(selectedLanguageCode.value),
           fallbackLocale: const Locale(DEFAULT_LANGUAGE),
           locale: Locale(selectedLanguageCode.value),
           theme: AppTheme.lightTheme,
@@ -91,8 +101,12 @@ class MyApp extends StatelessWidget {
           themeMode: isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
           initialBinding: BindingsBuilder(() {
             isDarkMode.value
-                ? setStatusBarColor(scaffoldDarkColor, statusBarIconBrightness: Brightness.light, statusBarBrightness: Brightness.light)
-                : setStatusBarColor(context.scaffoldBackgroundColor, statusBarIconBrightness: Brightness.dark, statusBarBrightness: Brightness.light);
+                ? setStatusBarColor(scaffoldDarkColor,
+                    statusBarIconBrightness: Brightness.light,
+                    statusBarBrightness: Brightness.light)
+                : setStatusBarColor(context.scaffoldBackgroundColor,
+                    statusBarIconBrightness: Brightness.dark,
+                    statusBarBrightness: Brightness.light);
             if (isLoggedIn.value) {
               log('INITIALBINDING: called');
               Get.put<HomeScreenController>(HomeScreenController());

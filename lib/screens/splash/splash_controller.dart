@@ -2,7 +2,8 @@
 
 import 'package:get/get.dart';
 import '../../utils/local_storage.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class SplashScreenController extends GetxController {
   @override
   void onInit() {
@@ -13,7 +14,8 @@ class SplashScreenController extends GetxController {
   void onReady() {
     init();
     try {
-      final getThemeFromLocal = getValueFromLocal(SettingsLocalConst.THEME_MODE);
+      final getThemeFromLocal =
+          getValueFromLocal(SettingsLocalConst.THEME_MODE);
       if (getThemeFromLocal is int) {
         toggleThemeMode(themeId: getThemeFromLocal);
       } else {
@@ -31,13 +33,15 @@ class SplashScreenController extends GetxController {
 
   ///Get ChooseService List
   getAppConfigurations() {
-    AuthServiceApis.getAppConfigurations(forceConfigSync: true).onError((error, stackTrace) {
+    AuthServiceApis.getAppConfigurations(forceConfigSync: true)
+        .onError((error, stackTrace) {
       toast(error.toString());
     }).whenComplete(() => navigationLogic());
   }
 
   void navigationLogic() {
-    if ((getValueFromLocal(SharedPreferenceConst.FIRST_TIME) ?? false) == false) {
+    if ((getValueFromLocal(SharedPreferenceConst.FIRST_TIME) ?? false) ==
+        false) {
       Get.offAll(() => WalkthroughScreen());
     } else if (getValueFromLocal(SharedPreferenceConst.IS_LOGGED_IN) == true) {
       try {

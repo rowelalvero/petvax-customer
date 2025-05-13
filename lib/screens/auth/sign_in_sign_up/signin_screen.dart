@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import 'package:pawlly/configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/configs.dart';
+import 'package:petvax/utils/library.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});

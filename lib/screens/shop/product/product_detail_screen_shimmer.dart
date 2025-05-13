@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductDetailScreenShimmer extends StatelessWidget {
   const ProductDetailScreenShimmer({super.key});
 
@@ -18,7 +19,8 @@ class ProductDetailScreenShimmer extends StatelessWidget {
               child: Container(
                 height: 330,
                 padding: const EdgeInsets.symmetric(vertical: 170),
-                decoration: boxDecorationDefault(borderRadius: BorderRadius.zero),
+                decoration:
+                    boxDecorationDefault(borderRadius: BorderRadius.zero),
               ),
             ),
             Positioned(
@@ -30,7 +32,8 @@ class ProductDetailScreenShimmer extends StatelessWidget {
                 children: [
                   CircleWidget(
                     circleColor: shimmerLightBaseColor,
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     child: ShimmerWidget(
                       child: Icon(
                         Icons.arrow_back_ios_new_rounded,
@@ -40,7 +43,8 @@ class ProductDetailScreenShimmer extends StatelessWidget {
                   ),
                   CircleWidget(
                     circleColor: shimmerLightBaseColor,
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     child: ShimmerWidget(
                       child: Icon(
                         Icons.shopping_cart_outlined,
@@ -58,7 +62,9 @@ class ProductDetailScreenShimmer extends StatelessWidget {
           children: List.generate(
             3,
             (index) => ShimmerWidget(
-              backgroundColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+              backgroundColor: isDarkMode.value
+                  ? shimmerDarkBaseColor
+                  : shimmerLightBaseColor,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             ).paddingSymmetric(horizontal: 16, vertical: 4),
           ),
@@ -75,14 +81,16 @@ class ProductDetailScreenShimmer extends StatelessWidget {
           baseColor: shimmerLightBaseColor,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(color: context.cardColor, borderRadius: radius(8)),
+            decoration: BoxDecoration(
+                color: context.cardColor, borderRadius: radius(8)),
           ),
         ).paddingRight(200).paddingLeft(16),
         ShimmerWidget(
           baseColor: shimmerLightBaseColor,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(color: context.cardColor, borderRadius: radius(8)),
+            decoration: BoxDecoration(
+                color: context.cardColor, borderRadius: radius(8)),
           ),
         ).paddingRight(200).paddingLeft(16),
         Row(
@@ -110,8 +118,10 @@ class ProductDetailScreenShimmer extends StatelessWidget {
             (index) => ShimmerWidget(
               baseColor: shimmerLightBaseColor,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-                decoration: BoxDecoration(color: context.cardColor, borderRadius: radius(8)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+                decoration: BoxDecoration(
+                    color: context.cardColor, borderRadius: radius(8)),
               ),
             ).paddingSymmetric(vertical: 8).paddingRight(12),
           ),

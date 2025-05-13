@@ -1,13 +1,16 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class WalkthroughScreen extends StatelessWidget {
   WalkthroughScreen({Key? key}) : super(key: key);
-  final WalkthroughController walkthroughController = Get.put(WalkthroughController());
+  final WalkthroughController walkthroughController =
+      Get.put(WalkthroughController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isDarkMode.value ? context.scaffoldBackgroundColor : containerColor,
+      backgroundColor:
+          isDarkMode.value ? context.scaffoldBackgroundColor : containerColor,
       body: Column(
         children: [
           SizedBox(height: Get.height * 0.04),
@@ -15,7 +18,8 @@ class WalkthroughScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: walkthroughController.handleSkip,
-              child: Text(locale.value.skip, style: primaryTextStyle(color: primaryColor)),
+              child: Text(locale.value.skip,
+                  style: primaryTextStyle(color: primaryColor)),
             ),
           ),
           SizedBox(height: Get.height * 0.025),
@@ -33,7 +37,8 @@ class WalkthroughScreen extends StatelessWidget {
                     width: Get.width,
                     decoration: boxDecorationDefault(borderRadius: radius(50)),
                     child: CachedImageWidget(
-                      url: walkthroughController.walkthroughDetails[index].image.validate(),
+                      url: walkthroughController.walkthroughDetails[index].image
+                          .validate(),
                       fit: BoxFit.cover,
                       radius: 10,
                     ),
@@ -44,14 +49,17 @@ class WalkthroughScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        walkthroughController.walkthroughDetails[index].title ?? "",
+                        walkthroughController.walkthroughDetails[index].title ??
+                            "",
                         style: primaryTextStyle(
                           size: 20,
                         ),
                       ),
                       10.height,
                       Text(
-                        walkthroughController.walkthroughDetails[index].subTitle ?? "",
+                        walkthroughController
+                                .walkthroughDetails[index].subTitle ??
+                            "",
                         style: secondaryTextStyle(),
                       ),
                       SizedBox(height: Get.height * 0.042),
@@ -81,12 +89,18 @@ class WalkthroughScreen extends StatelessWidget {
                         },
                         child: Container(
                           height: 8,
-                          width: walkthroughController.currentPage.value == index ? 20 : 8,
+                          width:
+                              walkthroughController.currentPage.value == index
+                                  ? 20
+                                  : 8,
                           margin: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: primaryColor),
-                            color: walkthroughController.currentPage.value == index ? primaryColor : null,
+                            color:
+                                walkthroughController.currentPage.value == index
+                                    ? primaryColor
+                                    : null,
                           ),
                         ),
                       );
@@ -95,7 +109,9 @@ class WalkthroughScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    walkthroughController.currentPage.value != (walkthroughController.walkthroughDetails.length - 1)
+                    walkthroughController.currentPage.value !=
+                            (walkthroughController.walkthroughDetails.length -
+                                1)
                         ? IconButton(
                             onPressed: walkthroughController.handleNext,
                             icon: const Icon(
@@ -107,7 +123,8 @@ class WalkthroughScreen extends StatelessWidget {
                             onPressed: walkthroughController.handleNext,
                             child: Text(
                               "Get Started",
-                              style: boldTextStyle(color: primaryColor, size: 14),
+                              style:
+                                  boldTextStyle(color: primaryColor, size: 14),
                             ),
                           ),
                   ],

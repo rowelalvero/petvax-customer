@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 //region FIREBASE AUTH
 final FirebaseAuth auth = FirebaseAuth.instance;

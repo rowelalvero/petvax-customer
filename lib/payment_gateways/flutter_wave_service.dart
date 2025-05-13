@@ -3,7 +3,7 @@
 import 'package:flutterwave_standard/flutterwave.dart';
 import 'package:uuid/uuid.dart';
 import '../../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class FlutterWaveService {
   final Customer customer = Customer(

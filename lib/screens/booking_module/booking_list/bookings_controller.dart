@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:stream_transform/stream_transform.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class BookingsController extends GetxController {
   RxBool isLoading = false.obs;

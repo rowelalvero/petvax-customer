@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../dashboard/dashboard_res_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class BoardingServiceController extends GetxController {
   RxBool isLoading = false.obs;

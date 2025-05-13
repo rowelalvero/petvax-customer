@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class NewOrderScreen extends StatelessWidget {
-  final OrderListController orderListController = Get.put(OrderListController());
+  final OrderListController orderListController =
+      Get.put(OrderListController());
 
   NewOrderScreen({super.key});
 
@@ -41,8 +43,11 @@ class NewOrderScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               shrinkWrap: true,
               listAnimationType: ListAnimationType.FadeIn,
-              fadeInConfiguration: FadeInConfiguration(duration: const Duration(seconds: 2)),
-              scaleConfiguration: ScaleConfiguration(duration: const Duration(milliseconds: 400), delay: const Duration(milliseconds: 50)),
+              fadeInConfiguration:
+                  FadeInConfiguration(duration: const Duration(seconds: 2)),
+              scaleConfiguration: ScaleConfiguration(
+                  duration: const Duration(milliseconds: 400),
+                  delay: const Duration(milliseconds: 50)),
               emptyWidget: NoDataWidget(
                 title: locale.value.noOrdersFound,
                 subTitle: locale.value.thereAreNoOrders,
@@ -117,10 +122,13 @@ class NewOrderScreen extends StatelessWidget {
             return Obx(
               () => GestureDetector(
                 onTap: () {
-                  if (orderListController.selectedIndex.contains(allOrderStatus[index].name)) {
-                    orderListController.selectedIndex.remove(allOrderStatus[index].name);
+                  if (orderListController.selectedIndex
+                      .contains(allOrderStatus[index].name)) {
+                    orderListController.selectedIndex
+                        .remove(allOrderStatus[index].name);
                   } else {
-                    orderListController.selectedIndex.add(allOrderStatus[index].name);
+                    orderListController.selectedIndex
+                        .add(allOrderStatus[index].name);
                   }
                 },
                 child: Container(
@@ -128,7 +136,8 @@ class NewOrderScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   decoration: boxDecorationDefault(
-                    color: orderListController.selectedIndex.contains(allOrderStatus[index].name)
+                    color: orderListController.selectedIndex
+                            .contains(allOrderStatus[index].name)
                         ? isDarkMode.value
                             ? primaryColor
                             : lightPrimaryColor
@@ -143,12 +152,15 @@ class NewOrderScreen extends StatelessWidget {
                         Icons.check,
                         size: 14,
                         color: isDarkMode.value ? whiteColor : primaryColor,
-                      ).visible(orderListController.selectedIndex.contains(allOrderStatus[index].name)),
-                      4.width.visible(orderListController.selectedIndex.contains(allOrderStatus[index].name)),
+                      ).visible(orderListController.selectedIndex
+                          .contains(allOrderStatus[index].name)),
+                      4.width.visible(orderListController.selectedIndex
+                          .contains(allOrderStatus[index].name)),
                       Text(
                         getOrderStatus(status: allOrderStatus[index].name),
                         style: secondaryTextStyle(
-                          color: orderListController.selectedIndex.contains(allOrderStatus[index].name)
+                          color: orderListController.selectedIndex
+                                  .contains(allOrderStatus[index].name)
                               ? isDarkMode.value
                                   ? whiteColor
                                   : primaryColor

@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
 import 'package:firebase_core/firebase_core.dart';
 
-const APP_NAME = 'Pawlly';
+const APP_NAME = 'Petvax';
 const APP_LOGO_URL = '$DOMAIN_URL/img/logo/mini_logo.png';
 const DEFAULT_LANGUAGE = 'en';
 const GREEK_LANGUAGE = 'el';

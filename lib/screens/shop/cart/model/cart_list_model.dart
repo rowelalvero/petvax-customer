@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class CartListResponse {
   bool status;

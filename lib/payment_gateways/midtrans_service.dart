@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:midpay/midpay.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class MidtransService {
   Midpay midpay = Midpay();

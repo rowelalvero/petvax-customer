@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 abstract class BaseLanguage {
   static BaseLanguage of(BuildContext context) =>
@@ -94,7 +94,7 @@ abstract class BaseLanguage {
 
   String get yourNewPasswordDoesnT;
 
-  String get findBestPawllyAround;
+  String get findBestPetvaxAround;
 
   String get letUsGiveThem;
 

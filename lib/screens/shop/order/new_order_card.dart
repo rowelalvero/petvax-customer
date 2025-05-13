@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class NewOrderCard extends StatelessWidget {
   final CartListData getOrderData;
   final VoidCallback? onUpdateDeliveryStatus;
 
-  NewOrderCard({super.key, required this.getOrderData, this.onUpdateDeliveryStatus});
+  NewOrderCard(
+      {super.key, required this.getOrderData, this.onUpdateDeliveryStatus});
 
   final OrderListController orderListController = Get.find();
 
@@ -12,7 +14,8 @@ class NewOrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      decoration: boxDecorationWithRoundedCorners(backgroundColor: context.cardColor),
+      decoration:
+          boxDecorationWithRoundedCorners(backgroundColor: context.cardColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,15 +23,18 @@ class NewOrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                 decoration: boxDecorationWithRoundedCorners(
                   backgroundColor: primaryColor,
                   borderRadius: radiusOnly(topLeft: defaultRadius),
                 ),
-                child: Text('#${getOrderData.orderCode}', style: boldTextStyle(color: Colors.white, size: 12)),
+                child: Text('#${getOrderData.orderCode}',
+                    style: boldTextStyle(color: Colors.white, size: 12)),
               ).visible(getOrderData.orderCode.isNotEmpty),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 3, horizontal: 16),
                 decoration: boxDecorationWithRoundedCorners(
                   backgroundColor: secondaryColor,
                   borderRadius: radiusOnly(topRight: defaultRadius),
@@ -59,7 +65,11 @@ class NewOrderCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(getOrderData.productName, style: primaryTextStyle(fontFamily: fontFamilyFontWeight400), maxLines: 1, overflow: TextOverflow.ellipsis),
+                      Text(getOrderData.productName,
+                          style: primaryTextStyle(
+                              fontFamily: fontFamilyFontWeight400),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis),
                       Row(
                         children: [
                           Text(
@@ -70,23 +80,37 @@ class NewOrderCard extends StatelessWidget {
                           ),
                           Text(
                             getOrderData.soldBy,
-                            style: primaryTextStyle(fontFamily: fontFamilyFontWeight600, size: 12, color: primaryColor),
+                            style: primaryTextStyle(
+                                fontFamily: fontFamilyFontWeight600,
+                                size: 12,
+                                color: primaryColor),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],
-                      ).visible(getOrderData.soldBy.isNotEmpty && !(getOrderData.soldBy == UNKNOWN)),
+                      ).visible(getOrderData.soldBy.isNotEmpty &&
+                          !(getOrderData.soldBy == UNKNOWN)),
                       if (getOrderData.productVariationType.isNotEmpty)
                         Row(
                           children: [
-                            Text('${getOrderData.productVariationType} : ', style: secondaryTextStyle()),
-                            Text(getOrderData.productVariationName, style: primaryTextStyle(size: 12, color: textPrimaryColorGlobal, fontFamily: fontFamilyFontWeight600)),
+                            Text('${getOrderData.productVariationType} : ',
+                                style: secondaryTextStyle()),
+                            Text(getOrderData.productVariationName,
+                                style: primaryTextStyle(
+                                    size: 12,
+                                    color: textPrimaryColorGlobal,
+                                    fontFamily: fontFamilyFontWeight600)),
                           ],
                         ),
                       Row(
                         children: [
-                          Text('${locale.value.qty} : ', style: secondaryTextStyle()),
-                          Text(getOrderData.qty.toString(), style: primaryTextStyle(size: 12, color: textPrimaryColorGlobal, fontFamily: fontFamilyFontWeight600)),
+                          Text('${locale.value.qty} : ',
+                              style: secondaryTextStyle()),
+                          Text(getOrderData.qty.toString(),
+                              style: primaryTextStyle(
+                                  size: 12,
+                                  color: textPrimaryColorGlobal,
+                                  fontFamily: fontFamilyFontWeight600)),
                         ],
                       ),
                     ],
@@ -126,6 +150,9 @@ class NewOrderCard extends StatelessWidget {
     ).onTap(() {
       hideKeyboard(context);
       Get.to(() => OrderDetailScreen(), arguments: getOrderData);
-    }, borderRadius: radius(), highlightColor: Colors.transparent, splashColor: Colors.transparent).paddingOnly(bottom: 16);
+    },
+        borderRadius: radius(),
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent).paddingOnly(bottom: 16);
   }
 }

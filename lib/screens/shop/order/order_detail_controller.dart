@@ -1,12 +1,23 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class OrderDetailController extends GetxController {
   RxBool isLoading = false.obs;
-  Rx<Future<OrderDetailModel>> getOrderDetailFuture = Future(() => OrderDetailModel(
-      data: OrderListData(orderDetails: OrderDetails(productDetails: CartListData(qty: 0.obs, productVariation: VariationData(inCart: false.obs), productReviewData: ProductReviewDataModel()))))).obs;
-  Rx<CartListData> selectedOrderData = CartListData(productVariation: VariationData(inCart: false.obs), qty: 0.obs, productReviewData: ProductReviewDataModel()).obs;
+  Rx<Future<OrderDetailModel>> getOrderDetailFuture = Future(() =>
+      OrderDetailModel(
+          data: OrderListData(
+              orderDetails: OrderDetails(
+                  productDetails: CartListData(
+                      qty: 0.obs,
+                      productVariation: VariationData(inCart: false.obs),
+                      productReviewData: ProductReviewDataModel()))))).obs;
+  Rx<CartListData> selectedOrderData = CartListData(
+          productVariation: VariationData(inCart: false.obs),
+          qty: 0.obs,
+          productReviewData: ProductReviewDataModel())
+      .obs;
   RxString orderCode = "".obs;
 
   TextEditingController reviewCont = TextEditingController();
@@ -23,8 +34,11 @@ class OrderDetailController extends GetxController {
     }
 
     if (selectedOrderData.value.productReviewData.id != null) {
-      selectedRating(selectedOrderData.value.productReviewData.rating.validate().toDouble());
-      reviewCont.text = selectedOrderData.value.productReviewData.reviewMsg.validate();
+      selectedRating(selectedOrderData.value.productReviewData.rating
+          .validate()
+          .toDouble());
+      reviewCont.text =
+          selectedOrderData.value.productReviewData.reviewMsg.validate();
     }
     init();
     super.onInit();
@@ -35,8 +49,12 @@ class OrderDetailController extends GetxController {
       if (Get.arguments is OrderListData) {
         await getOrderDetailFuture(
           OrderApis.getOrderDetail(
-            orderId: (Get.arguments as OrderListData).orderDetails.productDetails.orderId,
-            orderItemId: (Get.arguments as OrderListData).orderDetails.productDetails.id,
+            orderId: (Get.arguments as OrderListData)
+                .orderDetails
+                .productDetails
+                .orderId,
+            orderItemId:
+                (Get.arguments as OrderListData).orderDetails.productDetails.id,
           ),
         ).then((value) {
           isLoading(false);
@@ -61,7 +79,9 @@ class OrderDetailController extends GetxController {
 
   deleteOrderReview() async {
     isLoading(true);
-    await OrderApis.deleteOrderReview(id: selectedOrderData.value.productReviewData.id.validate()).then((value) {
+    await OrderApis.deleteOrderReview(
+            id: selectedOrderData.value.productReviewData.id.validate())
+        .then((value) {
       isLoading(false);
       init();
       // print("--------------------${value.message}");
@@ -80,7 +100,9 @@ class OrderDetailController extends GetxController {
 
     await OrderApis.updateOrderReview(
       files: pickedFile.validate(),
-      reviewId: selectedOrderData.value.productReviewData.id != null ? selectedOrderData.value.productReviewData.id.toString() : '',
+      reviewId: selectedOrderData.value.productReviewData.id != null
+          ? selectedOrderData.value.productReviewData.id.toString()
+          : '',
       productId: selectedOrderData.value.productId.toString(),
       employeeId: selectedOrderData.value.employeeId.toString(),
       productVariationId: selectedOrderData.value.productVariationId.toString(),
@@ -92,7 +114,9 @@ class OrderDetailController extends GetxController {
         init();
         // toast(locale.value.thankYouForReview);
         //TODO : Add Language
-        toast(addReview ? "Review Added Successfully" : "Review Updated Successfully");
+        toast(addReview
+            ? "Review Added Successfully"
+            : "Review Updated Successfully");
       },
     ).catchError((e) {
       isLoading(false);
@@ -105,8 +129,10 @@ class OrderDetailController extends GetxController {
     Get.back();
     GetMultipleImage(path: (xFiles) async {
       log('Path Gallery : ${xFiles.length.toString()}');
-      final existingNames = pickedFile.map((file) => file.name.trim().toLowerCase()).toSet();
-      pickedFile.addAll(xFiles.where((file) => !existingNames.contains(file.name.trim().toLowerCase())));
+      final existingNames =
+          pickedFile.map((file) => file.name.trim().toLowerCase()).toSet();
+      pickedFile.addAll(xFiles.where(
+          (file) => !existingNames.contains(file.name.trim().toLowerCase())));
     });
   }
 

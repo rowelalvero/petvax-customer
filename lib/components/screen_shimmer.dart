@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ScreenShimmer extends StatelessWidget {
   final double spacing;

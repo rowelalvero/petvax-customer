@@ -1,10 +1,13 @@
 import 'model/category_model.dart';
 import 'model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class DashboardShopApi {
   static Future<DashboardShopRes> getShopDashboard() async {
     String uId = isLoggedIn.value ? '?user_id=${loginUserData.value.id}' : '';
-    return DashboardShopRes.fromJson(await handleResponse(await buildHttpResponse("${APIEndPoints.getShopDashboard}$uId", method: HttpMethodType.GET)));
+    return DashboardShopRes.fromJson(await handleResponse(
+        await buildHttpResponse("${APIEndPoints.getShopDashboard}$uId",
+            method: HttpMethodType.GET)));
   }
 
   static Future<List<CategoryData>> getCategory({
@@ -14,7 +17,10 @@ class DashboardShopApi {
     required List<CategoryData> category,
     Function(bool)? lastPageCallBack,
   }) async {
-    final categoryRes = CategoryResponse.fromJson(await handleResponse(await buildHttpResponse("${APIEndPoints.getProductCategory}?per_page=$perPage&page=$page", method: HttpMethodType.GET)));
+    final categoryRes = CategoryResponse.fromJson(await handleResponse(
+        await buildHttpResponse(
+            "${APIEndPoints.getProductCategory}?per_page=$perPage&page=$page",
+            method: HttpMethodType.GET)));
     if (page == 1) category.clear();
     category.addAll(categoryRes.category.validate());
     lastPageCallBack?.call(categoryRes.category.validate().length != perPage);
@@ -33,21 +39,25 @@ class DashboardShopApi {
     Function(bool)? lastPageCallBack,
   }) async {
     String searchProduct = search.isNotEmpty ? 'search=$search&' : '';
-    String categoryIds = categoryId.isNotEmpty ? 'category_id=$categoryId&' : '';
+    String categoryIds =
+        categoryId.isNotEmpty ? 'category_id=$categoryId&' : '';
     String uId = isLoggedIn.value ? 'user_id=${loginUserData.value.id}&' : '';
     String isFeatures = isFeatured.isNotEmpty ? 'is_featured=$isFeatured&' : '';
-    String bestSellers = bestSeller.isNotEmpty ? 'best_seller=$bestSeller&' : '';
-    String bestDiscounts = bestDiscount.isNotEmpty ? 'best_discount=$bestDiscount&' : '';
+    String bestSellers =
+        bestSeller.isNotEmpty ? 'best_seller=$bestSeller&' : '';
+    String bestDiscounts =
+        bestDiscount.isNotEmpty ? 'best_discount=$bestDiscount&' : '';
 
     String perPages = 'per_page=$perPage&';
     String pages = 'page=$page';
 
-    final productListRes = ProductListResponse.fromJson(await handleResponse(await buildHttpResponse('${APIEndPoints.getProductList}?$categoryIds$uId$isFeatures$bestSellers$bestDiscounts$searchProduct$perPages$pages', method: HttpMethodType.GET)));
+    final productListRes = ProductListResponse.fromJson(await handleResponse(
+        await buildHttpResponse(
+            '${APIEndPoints.getProductList}?$categoryIds$uId$isFeatures$bestSellers$bestDiscounts$searchProduct$perPages$pages',
+            method: HttpMethodType.GET)));
     if (page == 1) products.clear();
     products.addAll(productListRes.data.validate());
     lastPageCallBack?.call(productListRes.data.validate().length != perPage);
     return products;
   }
-
-
 }

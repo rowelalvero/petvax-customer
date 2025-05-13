@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductListController extends GetxController {
-  Rx<Future<List<ProductItemData>>> getFeatured = Future(() => <ProductItemData>[]).obs;
+  Rx<Future<List<ProductItemData>>> getFeatured =
+      Future(() => <ProductItemData>[]).obs;
   RxBool isLoading = false.obs;
   RxBool isLastPage = false.obs;
   RxList<ProductItemData> productList = RxList();
@@ -28,7 +30,12 @@ class ProductListController extends GetxController {
       argumentsList(Get.arguments as ProductStatusModel);
     }
 
-    await getProductsList(categoryId: argumentsList.value.productCategoryID, bestDiscount: argumentsList.value.isDeal, isFeatured: argumentsList.value.isFeatured, bestSeller: argumentsList.value.isBestSeller, isFromSwipRefresh: isFromSwipRefresh);
+    await getProductsList(
+        categoryId: argumentsList.value.productCategoryID,
+        bestDiscount: argumentsList.value.isDeal,
+        isFeatured: argumentsList.value.isFeatured,
+        bestSeller: argumentsList.value.isBestSeller,
+        isFromSwipRefresh: isFromSwipRefresh);
   }
 
   void handleSearch() async {
@@ -36,7 +43,13 @@ class ProductListController extends GetxController {
     getProductsList(search: searchCont.text.trim());
   }
 
-  getProductsList({String search = "", String categoryId = "", String bestDiscount = "", String isFeatured = "", String bestSeller = "", bool isFromSwipRefresh = false}) {
+  getProductsList(
+      {String search = "",
+      String categoryId = "",
+      String bestDiscount = "",
+      String isFeatured = "",
+      String bestSeller = "",
+      bool isFromSwipRefresh = false}) {
     if (!isFromSwipRefresh) {
       isLoading(true);
     }
@@ -60,7 +73,8 @@ class ProductListController extends GetxController {
 
   ///Search
   void initializeSearchStream() {
-    _scrollController.addListener(() => Get.context != null ? hideKeyboard(Get.context) : null);
+    _scrollController.addListener(
+        () => Get.context != null ? hideKeyboard(Get.context) : null);
     searchStream.stream.debounce(const Duration(seconds: 1)).listen((s) {
       handleSearch();
     });

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../dashboard/dashboard_res_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class EventItemComponent extends StatelessWidget {
   final PetEvent event;

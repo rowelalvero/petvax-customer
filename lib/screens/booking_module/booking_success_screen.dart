@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 import 'package:get/get.dart';
-import 'package:pawlly/configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/configs.dart';
+import 'package:petvax/utils/library.dart';
 
 class BookingSuccess extends StatelessWidget {
   BookingSuccess({super.key});

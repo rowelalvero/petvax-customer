@@ -1,16 +1,19 @@
 // ignore_for_file: file_names
 import 'package:image_picker/image_picker.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class GetImage {
   ImageSource imageSource;
   Function path;
 
-  GetImage(this.imageSource, {required this.path(String imgPath, String imgName, XFile pickedFile)}) {
+  GetImage(this.imageSource,
+      {required this.path(String imgPath, String imgName, XFile pickedFile)}) {
     getImage();
   }
 
   Future getImage() async {
-    var pickedFile = await ImagePicker().pickImage(source: imageSource, imageQuality: 100);
+    var pickedFile =
+        await ImagePicker().pickImage(source: imageSource, imageQuality: 100);
 
     if (pickedFile != null) {
       log('imgFile path: ${pickedFile.path}');

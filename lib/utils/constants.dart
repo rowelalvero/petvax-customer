@@ -2,7 +2,8 @@
 
 import 'package:get/get.dart';
 import '../screens/dashboard/dashboard_res_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 const DEFAULT_QUANTITY = '1';
 const PERMISSION_STATUS = 'permissionStatus';
 const LATITUDE = 'LATITUDE';
@@ -15,7 +16,8 @@ const DASHBOARD_AUTO_SLIDER_SECOND = 5;
 class Constants {
   static const perPageItem = 20;
   static var labelTextSize = 15;
-  static var googleMapPrefix = 'https://www.google.com/maps/search/?api=1&query=';
+  static var googleMapPrefix =
+      'https://www.google.com/maps/search/?api=1&query=';
   static const DEFAULT_EMAIL = 'john@gmail.com';
   static const DEFAULT_PASS = '12345678';
   static const appLogoSize = 98.0;
@@ -30,9 +32,12 @@ class DateFormatConst {
   static const MMMM_D_yyyy = "MMMM d, y"; //TODO Use to show only in UI
   static const D_MMMM_yyyy = "d MMMM, y"; //TODO Use to show only in UI
   static const D_MMM_yyyy = "d MMM y"; //TODO Use to show only in UI
-  static const MMMM_D_yyyy_At_HH_mm_a = "MMMM d, y @ hh:mm a"; //TODO Use to show only in UI
-  static const EEEE_D_MMMM_At_HH_mm_a = "EEEE d MMMM @ hh:mm a"; //TODO Use to show only in UI
-  static const dd_MMM_yyyy_HH_mm_a = "dd MMM y, hh:mm a"; //TODO Use to show only in UI
+  static const MMMM_D_yyyy_At_HH_mm_a =
+      "MMMM d, y @ hh:mm a"; //TODO Use to show only in UI
+  static const EEEE_D_MMMM_At_HH_mm_a =
+      "EEEE d MMMM @ hh:mm a"; //TODO Use to show only in UI
+  static const dd_MMM_yyyy_HH_mm_a =
+      "dd MMM y, hh:mm a"; //TODO Use to show only in UI
   static const yyyy_MM_dd_HH_mm = 'yyyy-MM-dd HH:mm';
   static const yyyy_MM_dd = 'yyyy-MM-dd';
   static const HH_mm12Hour = 'hh:mm a';
@@ -65,7 +70,8 @@ class SharedPreferenceConst {
   static const IS_REMEMBER_ME = 'IS_REMEMBER_ME';
   static const USER_NAME = 'USER_NAME';
   static const AUTO_SLIDER_STATUS = 'AUTO_SLIDER_STATUS';
-  static const LAST_APP_CONFIGURATION_CALL_TIME='LAST_APP_CONFIGURATION_CALL_TIME';
+  static const LAST_APP_CONFIGURATION_CALL_TIME =
+      'LAST_APP_CONFIGURATION_CALL_TIME';
 }
 //endregion
 
@@ -128,7 +134,6 @@ class PageType {
 }
 //endregion
 
-
 //region CacheConst Keys
 class EmployeeKeyConst {
   static const boarding = 'boarder';
@@ -172,44 +177,44 @@ class NotificationConst {
   static const shop = 'shop';
 }
 
-class FirebaseTopicConst{
+class FirebaseTopicConst {
 //region Firebase Notification
-static const additionalDataKey = 'additional_data';
-static const notificationGroupKey = 'notification_group';
-static const shopKey = 'shop';
-static const orderCodeKey = 'order_code';
-static const bookingServicesNameKey = 'booking_services_names';
-static const idKey = 'id';
-static const itemIdKey = 'item_id';
+  static const additionalDataKey = 'additional_data';
+  static const notificationGroupKey = 'notification_group';
+  static const shopKey = 'shop';
+  static const orderCodeKey = 'order_code';
+  static const bookingServicesNameKey = 'booking_services_names';
+  static const idKey = 'id';
+  static const itemIdKey = 'item_id';
 
-static const notificationKey = 'Notification';
+  static const notificationKey = 'Notification';
 
-static const onMessageListen= "Error On Message Listen";
-static const onMessageOpened="Error On Message Opened App";
-static const onGetInitialMessage='Error On Get Initial Message';
+  static const onMessageListen = "Error On Message Listen";
+  static const onMessageOpened = "Error On Message Opened App";
+  static const onGetInitialMessage = 'Error On Get Initial Message';
 
-static const messageDataCollapseKey='MessageData Collapse Key';
+  static const messageDataCollapseKey = 'MessageData Collapse Key';
 
-static const messageDataMessageIdKey='MessageData Message Id';
+  static const messageDataMessageIdKey = 'MessageData Message Id';
 
-static const messageDataMessageTypeKey='MessageData Type';
-static const userWithUnderscoreKey = 'user_';
-static const notificationDataKey = 'Notification Data';
+  static const messageDataMessageTypeKey = 'MessageData Type';
+  static const userWithUnderscoreKey = 'user_';
+  static const notificationDataKey = 'Notification Data';
 
-static const fcmNotificationTokenKey = 'FCM Notification Token';
-static const apnsNotificationTokenKey = 'APNS Notification Token';
-static const notificationErrorKey = 'Notification Error';
-static const notificationTitleKey = 'Notification Title';
-static const notificationBodyKey = 'Notification Body';
-static const backgroundChannelIdKey='background_channel';
-static const backgroundChannelNameKey='background_channel';
+  static const fcmNotificationTokenKey = 'FCM Notification Token';
+  static const apnsNotificationTokenKey = 'APNS Notification Token';
+  static const notificationErrorKey = 'Notification Error';
+  static const notificationTitleKey = 'Notification Title';
+  static const notificationBodyKey = 'Notification Body';
+  static const backgroundChannelIdKey = 'background_channel';
+  static const backgroundChannelNameKey = 'background_channel';
 
-static const notificationChannelIdKey='notification';
-static const notificationChannelNameKey='Notification';
+  static const notificationChannelIdKey = 'notification';
+  static const notificationChannelNameKey = 'Notification';
 
-static const topicSubscribed='topic-----subscribed---->';
+  static const topicSubscribed = 'topic-----subscribed---->';
 
-static const topicUnSubscribed='topic-----UnSubscribed---->';
+  static const topicUnSubscribed = 'topic-----UnSubscribed---->';
 
 //endregion
 }
@@ -386,11 +391,17 @@ class AirtelMoneyResponseCodes {
     case AirtelMoneyResponseCodes.INCORRECT_PIN:
       return (locale.value.incorrectPin, locale.value.incorrectPinHasBeen);
     case AirtelMoneyResponseCodes.LIMIT_EXCEEDED:
-      return (locale.value.exceedsWithdrawalAmountLimit, locale.value.theUserHasExceeded);
+      return (
+        locale.value.exceedsWithdrawalAmountLimit,
+        locale.value.theUserHasExceeded
+      );
     case AirtelMoneyResponseCodes.INVALID_AMOUNT:
       return (locale.value.invalidAmount, locale.value.theAmountUserIs);
     case AirtelMoneyResponseCodes.INVALID_TRANSACTION_ID:
-      return (locale.value.transactionIdIsInvalid, locale.value.userDidnTEnterThePin);
+      return (
+        locale.value.transactionIdIsInvalid,
+        locale.value.userDidnTEnterThePin
+      );
     case AirtelMoneyResponseCodes.IN_PROCESS:
       return (locale.value.inProcess, locale.value.transactionInPendingState);
     case AirtelMoneyResponseCodes.INSUFFICIENT_BALANCE:
@@ -400,19 +411,37 @@ class AirtelMoneyResponseCodes {
     case AirtelMoneyResponseCodes.DO_NOT_HONOR:
       return (locale.value.doNotHonor, locale.value.thisIsAGeneric);
     case AirtelMoneyResponseCodes.TRANSACTION_NOT_PERMITTED:
-      return (locale.value.transactionNotPermittedTo, locale.value.payeeIsAlreadyInitiated);
+      return (
+        locale.value.transactionNotPermittedTo,
+        locale.value.payeeIsAlreadyInitiated
+      );
     case AirtelMoneyResponseCodes.TRANSACTION_TIMED_OUT:
-      return (locale.value.transactionTimedOut, locale.value.theTransactionWasTimed);
+      return (
+        locale.value.transactionTimedOut,
+        locale.value.theTransactionWasTimed
+      );
     case AirtelMoneyResponseCodes.TRANSACTION_NOT_FOUND:
-      return (locale.value.transactionNotFound, locale.value.theTransactionWasNot);
+      return (
+        locale.value.transactionNotFound,
+        locale.value.theTransactionWasNot
+      );
     case AirtelMoneyResponseCodes.FORBIDDEN:
       return (locale.value.forbidden, locale.value.xSignatureAndPayloadDid);
     case AirtelMoneyResponseCodes.FETCHED_ENCRYPTION_KEY_SUCCESSFULLY:
-      return (locale.value.successfullyFetchedEncryptionKey, locale.value.encryptionKeyHasBeen);
+      return (
+        locale.value.successfullyFetchedEncryptionKey,
+        locale.value.encryptionKeyHasBeen
+      );
     case AirtelMoneyResponseCodes.ERROR_FETCHING_ENCRYPTION_KEY:
-      return (locale.value.errorWhileFetchingEncryption, locale.value.couldNotFetchEncryption);
+      return (
+        locale.value.errorWhileFetchingEncryption,
+        locale.value.couldNotFetchEncryption
+      );
     case AirtelMoneyResponseCodes.TRANSACTION_EXPIRED:
-      return (locale.value.transactionExpired, locale.value.transactionHasBeenExpired);
+      return (
+        locale.value.transactionExpired,
+        locale.value.transactionHasBeenExpired
+      );
     default:
       return (locale.value.somethingWentWrong, locale.value.somethingWentWrong);
   }

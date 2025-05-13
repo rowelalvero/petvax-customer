@@ -3,7 +3,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import '../screens/dashboard/dashboard_res_model.dart';
 import '../screens/shop/shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class PushNotificationService {
 // It is assumed that all messages contain a data field with the key 'type'
   Future<void> setupFirebaseMessaging() async {
@@ -13,7 +14,10 @@ class PushNotificationService {
   }
 
   Future<void> initFirebaseMessaging() async {
-    NotificationSettings settings = await FirebaseMessaging.instance.requestPermission(alert: true, badge: true, sound: true, provisional: true).catchError((e) {
+    NotificationSettings settings = await FirebaseMessaging.instance
+        .requestPermission(
+            alert: true, badge: true, sound: true, provisional: true)
+        .catchError((e) {
       log('------Request Notification Permission ERROR-----------');
     });
 
@@ -27,7 +31,10 @@ class PushNotificationService {
 
       FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
-      await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true).then((value) {
+      await FirebaseMessaging.instance
+          .setForegroundNotificationPresentationOptions(
+              alert: true, badge: true, sound: true)
+          .then((value) {
         log('------setForegroundNotificationPresentationOptions COMPLETED-----------');
       }).catchError((e) {
         log('------setForegroundNotificationPresentationOptions ERROR-----------');
@@ -59,40 +66,58 @@ class PushNotificationService {
   }
 
   Future<void> subScribeToTopic() async {
-    await FirebaseMessaging.instance.subscribeToTopic(appNameTopic).whenComplete(() {
+    await FirebaseMessaging.instance
+        .subscribeToTopic(appNameTopic)
+        .whenComplete(() {
       log("${FirebaseTopicConst.topicSubscribed}$appNameTopic");
     });
-    await FirebaseMessaging.instance.subscribeToTopic("${FirebaseTopicConst.userWithUnderscoreKey}${loginUserData.value.id}").then((value) {
+    await FirebaseMessaging.instance
+        .subscribeToTopic(
+            "${FirebaseTopicConst.userWithUnderscoreKey}${loginUserData.value.id}")
+        .then((value) {
       log("${FirebaseTopicConst.topicSubscribed}${FirebaseTopicConst.userWithUnderscoreKey}${loginUserData.value.id}");
     });
   }
 
   Future<void> unsubscribeFirebaseTopic() async {
-    await FirebaseMessaging.instance.unsubscribeFromTopic(appNameTopic).then((value) {
+    await FirebaseMessaging.instance
+        .unsubscribeFromTopic(appNameTopic)
+        .then((value) {
       log("${FirebaseTopicConst.topicUnSubscribed}$appNameTopic");
     });
-    await FirebaseMessaging.instance.unsubscribeFromTopic('${FirebaseTopicConst.userWithUnderscoreKey}${loginUserData.value.id}').then((value) {
+    await FirebaseMessaging.instance
+        .unsubscribeFromTopic(
+            '${FirebaseTopicConst.userWithUnderscoreKey}${loginUserData.value.id}')
+        .then((value) {
       log("${FirebaseTopicConst.topicUnSubscribed}${FirebaseTopicConst.userWithUnderscoreKey}${loginUserData.value.id}");
     });
   }
 
-  void handleNotificationClick(RemoteMessage message, {bool isForeGround = false}) {
+  void handleNotificationClick(RemoteMessage message,
+      {bool isForeGround = false}) {
     printLogsNotificationData(message);
     NotificationData notificationData = NotificationData.fromJson(message.data);
     log("===============${FirebaseTopicConst.notificationDataKey}===============\n${notificationData.toJson()}");
     if (isForeGround) {
-      showNotification(currentTimeStamp(), message.notification!.title.validate(), message.notification!.body.validate(), message);
+      showNotification(
+          currentTimeStamp(),
+          message.notification!.title.validate(),
+          message.notification!.body.validate(),
+          message);
     } else {
       log('=============== ELSE PART ===============');
       try {
-        Map<String, dynamic> additionalData = jsonDecode(message.data[FirebaseTopicConst.additionalDataKey]) ?? {};
+        Map<String, dynamic> additionalData =
+            jsonDecode(message.data[FirebaseTopicConst.additionalDataKey]) ??
+                {};
         if (additionalData.isNotEmpty) {
           int? notId = additionalData[FirebaseTopicConst.idKey];
           log("notId=== $notId");
           if (notId != null) {
             log("additionalData[FirebaseTopicConst.notificationGroupKey]=== ${additionalData[FirebaseTopicConst.notificationGroupKey]}");
             log("FirebaseTopicConst.shopKey=== ${FirebaseTopicConst.shopKey}");
-            if (additionalData[FirebaseTopicConst.notificationGroupKey] == FirebaseTopicConst.shopKey) {
+            if (additionalData[FirebaseTopicConst.notificationGroupKey] ==
+                FirebaseTopicConst.shopKey) {
               log("============ IN SHOP ================");
               Get.to(
                 () => OrderDetailScreen(),
@@ -114,7 +139,11 @@ class PushNotificationService {
                     () => BookingDetailScreen(),
                     arguments: BookingDataModel(
                       id: notId,
-                      service: SystemService(slug: additionalData[FirebaseTopicConst.bookingServicesNameKey].toString().toLowerCase()),
+                      service: SystemService(
+                          slug: additionalData[
+                                  FirebaseTopicConst.bookingServicesNameKey]
+                              .toString()
+                              .toLowerCase()),
                       payment: PaymentDetails(),
                       training: Training(),
                     ),
@@ -145,7 +174,8 @@ class PushNotificationService {
     });
 
     // workaround for onLaunch: When the app is completely closed (not in the background) and opened directly from the push notification
-    FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {
+    FirebaseMessaging.instance.getInitialMessage().then(
+        (RemoteMessage? message) {
       if (message != null) {
         handleNotificationClick(message);
       }
@@ -154,8 +184,10 @@ class PushNotificationService {
     });
   }
 
-  void showNotification(int id, String title, String message, RemoteMessage remoteMessage) async {
-    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  void showNotification(
+      int id, String title, String message, RemoteMessage remoteMessage) async {
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
 
     //code for background notification channel
     AndroidNotificationChannel channel = const AndroidNotificationChannel(
@@ -167,9 +199,13 @@ class PushNotificationService {
       showBadge: true,
     );
 
-    await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(channel);
 
-    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('@drawable/ic_stat_ic_notification');
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@drawable/ic_stat_ic_notification');
 
     var iOS = DarwinInitializationSettings(
       requestSoundPermission: false,
@@ -181,8 +217,11 @@ class PushNotificationService {
     );
     var macOS = iOS;
 
-    final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: iOS, macOS: macOS);
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings, onDidReceiveNotificationResponse: (details) {
+    final InitializationSettings initializationSettings =
+        InitializationSettings(
+            android: initializationSettingsAndroid, iOS: iOS, macOS: macOS);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onDidReceiveNotificationResponse: (details) {
       handleNotificationClick(remoteMessage);
     });
 
@@ -211,11 +250,13 @@ class PushNotificationService {
       macOS: darwinPlatformChannelSpecifics,
     );
 
-    flutterLocalNotificationsPlugin.show(id, title, message, platformChannelSpecifics);
+    flutterLocalNotificationsPlugin.show(
+        id, title, message, platformChannelSpecifics);
   }
 
   Future<void> enableIOSNotifications() async {
-    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
       alert: true, // Required to display a heads up notification
       badge: true,
       sound: true,

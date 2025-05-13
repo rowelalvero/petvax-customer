@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ChoosePetSitterHomeComponentsShimmer extends StatelessWidget {
   const ChoosePetSitterHomeComponentsShimmer({Key? key}) : super(key: key);

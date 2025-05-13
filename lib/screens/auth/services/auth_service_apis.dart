@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import '../../../utils/local_storage.dart';
 import '../model/change_password_res.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class AuthServiceApis {
   static Future<RegUserResp> createUser({required Map request}) async {

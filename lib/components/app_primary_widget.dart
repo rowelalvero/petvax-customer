@@ -1,6 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_if_null_operators, prefer_const_constructors, no_leading_underscores_for_local_identifiers
 
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class AppPrimaryWidget extends StatefulWidget {
   final Widget? child;

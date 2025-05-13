@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class FormWidget extends StatelessWidget {
   String name;

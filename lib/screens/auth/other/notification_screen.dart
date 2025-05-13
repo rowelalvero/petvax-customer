@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../dashboard/dashboard_res_model.dart';
 import '../../shop/shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class NotificationScreen extends StatelessWidget {
   NotificationScreen({Key? key}) : super(key: key);

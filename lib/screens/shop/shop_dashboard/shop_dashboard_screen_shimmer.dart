@@ -1,7 +1,9 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ShopDashboardScreenShimmer extends StatelessWidget {
   final bool isSearch;
-  const ShopDashboardScreenShimmer({Key? key, this.isSearch = false}) : super(key: key);
+  const ShopDashboardScreenShimmer({Key? key, this.isSearch = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

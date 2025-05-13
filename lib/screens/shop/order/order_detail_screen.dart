@@ -2,10 +2,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/route_manager.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class OrderDetailScreen extends StatelessWidget {
   OrderDetailScreen({super.key});
-  final OrderDetailController orderDetailController = Get.put(OrderDetailController());
+  final OrderDetailController orderDetailController =
+      Get.put(OrderDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,19 +54,27 @@ class OrderDetailScreen extends StatelessWidget {
               children: [
                 OrderInformationComponent(orderData: snap.data),
                 16.height,
-                AboutProductComponent(productData: snap.data.orderDetails.productDetails, deliveryStatus: snap.data.deliveryStatus),
+                AboutProductComponent(
+                    productData: snap.data.orderDetails.productDetails,
+                    deliveryStatus: snap.data.deliveryStatus),
                 16.height,
                 OrderPaymentInfoComponent(orderData: snap.data),
                 16.height,
                 if (snap.data.orderDetails.otherOrderItems.isNotEmpty)
                   Column(
                     children: [
-                      OtherProductItemsComponent(otherProductItemList: snap.data.orderDetails.otherOrderItems).paddingBottom(16),
+                      OtherProductItemsComponent(
+                              otherProductItemList:
+                                  snap.data.orderDetails.otherOrderItems)
+                          .paddingBottom(16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('${locale.value.grandTotal}: ', style: primaryTextStyle(size: 14)),
-                          PriceWidget(price: snap.data.orderDetails.grandTotal, size: 14),
+                          Text('${locale.value.grandTotal}: ',
+                              style: primaryTextStyle(size: 14)),
+                          PriceWidget(
+                              price: snap.data.orderDetails.grandTotal,
+                              size: 14),
                         ],
                       ),
                     ],

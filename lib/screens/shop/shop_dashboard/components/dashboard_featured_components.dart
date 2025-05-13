@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import '../model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class DashboardFeaturedComponents extends StatelessWidget {
   final List<ProductItemData> featuredProductList;
 
-  const DashboardFeaturedComponents({super.key, required this.featuredProductList});
+  const DashboardFeaturedComponents(
+      {super.key, required this.featuredProductList});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,10 @@ class DashboardFeaturedComponents extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(bottom: 16),
       width: Get.width,
-      decoration: BoxDecoration(color: isDarkMode.value ? whiteColor.withOpacity(0.1) : lightPrimaryColor2),
+      decoration: BoxDecoration(
+          color: isDarkMode.value
+              ? whiteColor.withOpacity(0.1)
+              : lightPrimaryColor2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,16 +35,21 @@ class DashboardFeaturedComponents extends StatelessWidget {
             label: locale.value.featuredProducts,
             list: featuredProductList,
             onTap: () {
-               hideKeyboard(context);
-              Get.to(() => ProductListScreen(title: locale.value.featuredProducts), arguments: ProductStatusModel(isFeatured: "1"));
+              hideKeyboard(context);
+              Get.to(
+                  () => ProductListScreen(title: locale.value.featuredProducts),
+                  arguments: ProductStatusModel(isFeatured: "1"));
             },
           ).paddingSymmetric(horizontal: 16),
           HorizontalList(
             itemCount: featuredProductList.take(6).length,
-            padding: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 16),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 16),
             crossAxisAlignment: WrapCrossAlignment.start,
             itemBuilder: (_, index) {
-              return ProductItemComponents(productListData: featuredProductList[index]).paddingRight(8);
+              return ProductItemComponents(
+                      productListData: featuredProductList[index])
+                  .paddingRight(8);
             },
           ),
         ],

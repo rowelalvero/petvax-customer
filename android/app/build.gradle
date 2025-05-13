@@ -20,7 +20,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.pawlly.customer"
+    namespace "com.petvax.customer"
     compileSdkVersion 34
     ndkVersion "27.0.12077973"
     java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -40,7 +40,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.pawlly.customer"
+        applicationId "com.petvax.customer"
         minSdkVersion 23
         targetSdkVersion 34
         versionCode 28

@@ -2,11 +2,13 @@
 import 'package:get/get.dart';
 import 'model/category_model.dart';
 import 'model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ShopDashboardScreen extends StatelessWidget {
   ShopDashboardScreen({super.key});
 
-  final ShopDashboardController shopDashboardController = Get.put(ShopDashboardController());
+  final ShopDashboardController shopDashboardController =
+      Get.put(ShopDashboardController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,14 @@ class ShopDashboardScreen extends StatelessWidget {
             hideKeyboard(context);
 
             /// Clear search when redirect to other screen
-            if (shopDashboardController.pCont.searchCont.text.trim().isNotEmpty) {
+            if (shopDashboardController.pCont.searchCont.text
+                .trim()
+                .isNotEmpty) {
               shopDashboardController.pCont.searchCont.clear();
-              shopDashboardController.pCont.isSearchText(shopDashboardController.pCont.searchCont.text.trim().isNotEmpty);
+              shopDashboardController.pCont.isSearchText(shopDashboardController
+                  .pCont.searchCont.text
+                  .trim()
+                  .isNotEmpty);
               shopDashboardController.pCont.handleSearch();
             }
 
@@ -30,7 +37,8 @@ class ShopDashboardScreen extends StatelessWidget {
               Get.to(() => WishListScreen());
             });
           },
-          icon: const Icon(Icons.favorite_border_outlined, color: switchColor, size: 25),
+          icon: const Icon(Icons.favorite_border_outlined,
+              color: switchColor, size: 25),
         ),
         CartIconBtn(shopDashboardController: shopDashboardController),
       ],
@@ -50,7 +58,9 @@ class ShopDashboardScreen extends StatelessWidget {
             ).paddingSymmetric(horizontal: 16),
             8.height,
             Obx(
-              () => shopDashboardController.pCont.isSearchText.value ? _buildSearchComponent() : _buildShopHomeComponent(),
+              () => shopDashboardController.pCont.isSearchText.value
+                  ? _buildSearchComponent()
+                  : _buildShopHomeComponent(),
             )
           ],
         ),
@@ -66,7 +76,10 @@ class ShopDashboardScreen extends StatelessWidget {
       },
       child: SnapHelperWidget<DashboardShopRes>(
         future: shopDashboardController.getDashboardDetail.value,
-        initialData: shopDashboardController.shopdashboardData.value.shopDashData.category.isNotEmpty ? shopDashboardController.shopdashboardData.value : null,
+        initialData: shopDashboardController
+                .shopdashboardData.value.shopDashData.category.isNotEmpty
+            ? shopDashboardController.shopdashboardData.value
+            : null,
         errorBuilder: (error) {
           return NoDataWidget(
             title: error,
@@ -93,10 +106,22 @@ class ShopDashboardScreen extends StatelessWidget {
             listAnimationType: ListAnimationType.FadeIn,
             padding: const EdgeInsets.only(bottom: 20),
             children: [
-              DashboardCategoryComponents(productCategoryList: shopDashboardRes.shopDashData.category).paddingTop(8),
-              DashboardFeaturedComponents(featuredProductList: shopDashboardRes.shopDashData.featuredProduct).paddingTop(16),
-              BestSellerComponents(bestSellerProductList: shopDashboardRes.shopDashData.bestsellerProduct).paddingTop(16),
-              DealsComponents(discountProductList: shopDashboardRes.shopDashData.discountProduct).paddingTop(16),
+              DashboardCategoryComponents(
+                      productCategoryList:
+                          shopDashboardRes.shopDashData.category)
+                  .paddingTop(8),
+              DashboardFeaturedComponents(
+                      featuredProductList:
+                          shopDashboardRes.shopDashData.featuredProduct)
+                  .paddingTop(16),
+              BestSellerComponents(
+                      bestSellerProductList:
+                          shopDashboardRes.shopDashData.bestsellerProduct)
+                  .paddingTop(16),
+              DealsComponents(
+                      discountProductList:
+                          shopDashboardRes.shopDashData.discountProduct)
+                  .paddingTop(16),
             ],
           );
         },
@@ -120,7 +145,9 @@ class ShopDashboardScreen extends StatelessWidget {
       },
       loadingWidget: const ProductListScreenShimmer(),
       onSuccess: (productList) {
-        if (productList.isEmpty && shopDashboardController.pCont.isSearchText.value && !shopDashboardController.pCont.isLoading.value) {
+        if (productList.isEmpty &&
+            shopDashboardController.pCont.isSearchText.value &&
+            !shopDashboardController.pCont.isLoading.value) {
           return NoDataWidget(
             title: locale.value.noProductsFound,
             imageWidget: const EmptyStateWidget(),
@@ -128,7 +155,8 @@ class ShopDashboardScreen extends StatelessWidget {
         }
 
         return AnimatedScrollView(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 30),
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 30),
           onSwipeRefresh: () async {
             shopDashboardController.pCont.page(1);
             shopDashboardController.pCont.handleSearch();
@@ -136,7 +164,8 @@ class ShopDashboardScreen extends StatelessWidget {
           },
           onNextPage: () {
             if (!shopDashboardController.pCont.isLastPage.value) {
-              shopDashboardController.pCont.page(shopDashboardController.pCont.page.value + 1);
+              shopDashboardController.pCont
+                  .page(shopDashboardController.pCont.page.value + 1);
               shopDashboardController.pCont.handleSearch();
             }
           },
@@ -151,9 +180,11 @@ class ShopDashboardScreen extends StatelessWidget {
                   () => (productList.length == 1)
                       ? Align(
                           alignment: Alignment.topLeft,
-                          child: ProductItemComponents(productListData: productList[index]),
+                          child: ProductItemComponents(
+                              productListData: productList[index]),
                         )
-                      : ProductItemComponents(productListData: productList[index]),
+                      : ProductItemComponents(
+                          productListData: productList[index]),
                 );
               },
             ),

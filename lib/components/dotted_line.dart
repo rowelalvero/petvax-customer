@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class DottedLine extends StatelessWidget {
   /// Creates dotted line with the given parameters

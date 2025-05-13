@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class UpcomingAppointmentComponentShimmer extends StatelessWidget {
   const UpcomingAppointmentComponentShimmer({Key? key}) : super(key: key);

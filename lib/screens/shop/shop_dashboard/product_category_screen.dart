@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductCategoryScreen extends StatelessWidget {
-  final ProductCategoryScreenController productCategoryScreenController = Get.put(ProductCategoryScreenController());
+  final ProductCategoryScreenController productCategoryScreenController =
+      Get.put(ProductCategoryScreenController());
 
   ProductCategoryScreen({super.key});
 
@@ -48,7 +50,8 @@ class ProductCategoryScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               onNextPage: () {
                 if (!productCategoryScreenController.isLastPage.value) {
-                  productCategoryScreenController.page(productCategoryScreenController.page.value + 1);
+                  productCategoryScreenController
+                      .page(productCategoryScreenController.page.value + 1);
                   productCategoryScreenController.init();
                 }
               },
@@ -71,7 +74,8 @@ class ProductCategoryScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: CategoryItemComponents(categoryData: data, width: Get.width / 3 - 22),
+                      child: CategoryItemComponents(
+                          categoryData: data, width: Get.width / 3 - 22),
                     );
                   },
                 ),

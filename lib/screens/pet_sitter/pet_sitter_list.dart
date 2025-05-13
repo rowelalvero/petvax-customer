@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:pawlly/screens/pet_sitter/pet_sitter_model.dart';
+import 'package:petvax/screens/pet_sitter/pet_sitter_model.dart';
 
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class PetSitterListScreen extends StatelessWidget {
   PetSitterListScreen({Key? key}) : super(key: key);

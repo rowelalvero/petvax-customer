@@ -1,5 +1,5 @@
 import '../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({super.key});

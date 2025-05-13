@@ -1,7 +1,7 @@
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class RazorPayService {
   static late Razorpay razorPay;

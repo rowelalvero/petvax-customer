@@ -1,4 +1,5 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class EmptyStateWidget extends StatelessWidget {
   final double? height;
   final double? width;

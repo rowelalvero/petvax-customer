@@ -1,4 +1,5 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class NewOrderScreenShimmer extends StatelessWidget {
   const NewOrderScreenShimmer({Key? key}) : super(key: key);
 

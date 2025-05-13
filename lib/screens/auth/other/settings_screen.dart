@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../locale/app_localizations.dart';
 import '../../../locale/languages.dart';
 import '../../../utils/local_storage.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class QtyComponents extends StatelessWidget {
   final ProductDetailController productController;
 
@@ -11,9 +12,11 @@ class QtyComponents extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         8.height,
-        ViewAllLabel(label: locale.value.quantity, isShowAll: false).paddingSymmetric(horizontal: 16),
+        ViewAllLabel(label: locale.value.quantity, isShowAll: false)
+            .paddingSymmetric(horizontal: 16),
         Container(
-          decoration: boxDecorationDefault(color: context.cardColor, shape: BoxShape.rectangle),
+          decoration: boxDecorationDefault(
+              color: context.cardColor, shape: BoxShape.rectangle),
           width: Get.width * 0.35,
           height: 40,
           child: Obx(
@@ -27,7 +30,9 @@ class QtyComponents extends StatelessWidget {
                       productController.qtyCount.value--;
                     }
                   },
-                  icon: Icon(Icons.remove, color: isDarkMode.value ? Colors.white : iconColor, size: 15),
+                  icon: Icon(Icons.remove,
+                      color: isDarkMode.value ? Colors.white : iconColor,
+                      size: 15),
                 ),
                 Text(
                   '${productController.qtyCount}',
@@ -35,14 +40,18 @@ class QtyComponents extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    if (productController.qtyCount.value < productController.selectedVariationData.value.productStockQty) {
+                    if (productController.qtyCount.value <
+                        productController
+                            .selectedVariationData.value.productStockQty) {
                       productController.qtyCount.value++;
                     } else {
                       Fluttertoast.cancel();
                       toast("${locale.value.outOfStock}!!!");
                     }
                   },
-                  icon: Icon(Icons.add, color: isDarkMode.value ? Colors.white : iconColor, size: 15),
+                  icon: Icon(Icons.add,
+                      color: isDarkMode.value ? Colors.white : iconColor,
+                      size: 15),
                 ),
               ],
             ),

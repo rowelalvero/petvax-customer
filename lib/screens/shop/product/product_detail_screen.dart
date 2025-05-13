@@ -1,8 +1,10 @@
 ﻿import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ProductDetail extends StatelessWidget {
   ProductDetail({super.key});
-  final ProductDetailController productDetailController = ProductDetailController();
+  final ProductDetailController productDetailController =
+      ProductDetailController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,9 @@ class ProductDetail extends StatelessWidget {
         builder: (c) {
           return WillPopScope(
             onWillPop: () {
-              Get.back(result: productDetailController.productDetailRes.value.data.inWishlist.value);
+              Get.back(
+                  result: productDetailController
+                      .productDetailRes.value.data.inWishlist.value);
               return Future(() => false);
             },
             child: AppScaffold(
@@ -22,7 +26,8 @@ class ProductDetail extends StatelessWidget {
               isLoading: productDetailController.isLoading,
               body: RefreshIndicator(
                 onRefresh: () async {
-                  productDetailController.getProductDetails(isFromSwipeRefresh: true);
+                  productDetailController.getProductDetails(
+                      isFromSwipeRefresh: true);
                   return await Future.delayed(const Duration(seconds: 2));
                 },
                 child: Obx(
@@ -59,23 +64,41 @@ class ProductDetail extends StatelessWidget {
                             padding: const EdgeInsets.only(bottom: 85),
                             physics: const AlwaysScrollableScrollPhysics(),
                             children: [
-                              ProductSlider(productGallaryData: snap.data.productGallaryData.validate(), productController: productDetailController),
+                              ProductSlider(
+                                  productGallaryData:
+                                      snap.data.productGallaryData.validate(),
+                                  productController: productDetailController),
                               16.height,
-                              ProductInfoComponent(productData: snap.data, productController: productDetailController),
-                              FoodPacketComponents(productData: snap.data, productController: productDetailController),
-                              DeliveryOptionComponents(productData: snap.data, productController: productDetailController),
+                              ProductInfoComponent(
+                                  productData: snap.data,
+                                  productController: productDetailController),
+                              FoodPacketComponents(
+                                  productData: snap.data,
+                                  productController: productDetailController),
+                              DeliveryOptionComponents(
+                                  productData: snap.data,
+                                  productController: productDetailController),
                               16.height,
-                              RatingComponents(productReviewData: snap.data, reviewDetails: snap.data.productReview.validate(), productController: productDetailController),
+                              RatingComponents(
+                                  productReviewData: snap.data,
+                                  reviewDetails:
+                                      snap.data.productReview.validate(),
+                                  productController: productDetailController),
                               16.height,
-                              RelatedProductComponents(relatedProductData: snap.relatedProduct.validate(), productController: productDetailController),
+                              RelatedProductComponents(
+                                  relatedProductData:
+                                      snap.relatedProduct.validate(),
+                                  productController: productDetailController),
                             ],
                           ),
                           Positioned(
                             top: context.statusBarHeight + 8,
                             left: 16,
                             child: Container(
-                              decoration: const BoxDecoration(shape: BoxShape.circle, color: white),
-                              child: backButton(result: snap.data.inWishlist.value),
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle, color: white),
+                              child: backButton(
+                                  result: snap.data.inWishlist.value),
                             ).scale(scale: 0.8),
                           ),
                           Positioned(
@@ -100,11 +123,22 @@ class ProductDetail extends StatelessWidget {
                                       height: 47,
                                       splashColor: context.cardColor,
                                       padding: EdgeInsets.zero,
-                                      child: snap.data.inWishlist.value ? const Icon(Icons.favorite, size: 26, color: redColor) : const Icon(Icons.favorite_border_outlined, size: 26, color: secondaryTextColor),
+                                      child: snap.data.inWishlist.value
+                                          ? const Icon(Icons.favorite,
+                                              size: 26, color: redColor)
+                                          : const Icon(
+                                              Icons.favorite_border_outlined,
+                                              size: 26,
+                                              color: secondaryTextColor),
                                       onTap: () {
                                         doIfLoggedIn(context, () async {
-                                          productDetailController.isLoading(true);
-                                          WishListApis.onTapFavourite(favdata: snap.data).whenComplete(() => productDetailController.isLoading(false));
+                                          productDetailController
+                                              .isLoading(true);
+                                          WishListApis.onTapFavourite(
+                                                  favdata: snap.data)
+                                              .whenComplete(() =>
+                                                  productDetailController
+                                                      .isLoading(false));
                                         });
                                       },
                                     ).expand(),
@@ -112,19 +146,49 @@ class ProductDetail extends StatelessWidget {
                                   16.width,
                                   Obx(
                                     () => AppButton(
-                                      color: productDetailController.selectedVariationData.value.isStockAvaible == 1 ? context.primaryColor : null,
+                                      color: productDetailController
+                                                  .selectedVariationData
+                                                  .value
+                                                  .isStockAvaible ==
+                                              1
+                                          ? context.primaryColor
+                                          : null,
                                       width: 45,
                                       height: 47,
-                                      enabled: productDetailController.isAddToCartButtonEnabled.value && productDetailController.selectedVariationData.value.isStockAvaible == 1 ? true : false,
-                                      disabledColor: productDetailController.selectedVariationData.value.isStockAvaible == 1 ? null : context.primaryColor.withOpacity(0.8),
+                                      enabled: productDetailController
+                                                  .isAddToCartButtonEnabled
+                                                  .value &&
+                                              productDetailController
+                                                      .selectedVariationData
+                                                      .value
+                                                      .isStockAvaible ==
+                                                  1
+                                          ? true
+                                          : false,
+                                      disabledColor: productDetailController
+                                                  .selectedVariationData
+                                                  .value
+                                                  .isStockAvaible ==
+                                              1
+                                          ? null
+                                          : context.primaryColor
+                                              .withOpacity(0.8),
                                       splashColor: context.primaryColor,
                                       padding: EdgeInsets.zero,
                                       child: Text(
-                                        productDetailController.selectedVariationData.value.inCart.value
+                                        productDetailController
+                                                .selectedVariationData
+                                                .value
+                                                .inCart
+                                                .value
                                             ? locale.value.goToCart
                                             : locale.value.addToCart,
                                         style: boldTextStyle(
-                                          color: productDetailController.selectedVariationData.value.isStockAvaible == 1
+                                          color: productDetailController
+                                                      .selectedVariationData
+                                                      .value
+                                                      .isStockAvaible ==
+                                                  1
                                               ? Colors.white
                                               : Colors.white70,
                                         ),
@@ -132,13 +196,19 @@ class ProductDetail extends StatelessWidget {
                                       onTap: () {
                                         hideKeyboard(context);
                                         doIfLoggedIn(context, () async {
-                                          if (productDetailController.selectedVariationData.value.inCart.value) {
+                                          if (productDetailController
+                                              .selectedVariationData
+                                              .value
+                                              .inCart
+                                              .value) {
                                             await Get.to(() => CartScreen());
-                                            productDetailController.isLoading(true);
+                                            productDetailController
+                                                .isLoading(true);
                                             productDetailController.init();
                                           } else {
                                             /// Add To Cart Api
-                                            productDetailController.addProductToCart();
+                                            productDetailController
+                                                .addProductToCart();
                                           }
                                         });
                                       },

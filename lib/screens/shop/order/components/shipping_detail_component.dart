@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ShippingDetailComponent extends StatelessWidget {
   final OrderListData shippingData;
@@ -20,73 +20,61 @@ class ShippingDetailComponent extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Marquee(child: Text(shippingData.userName.capitalizeFirstLetter(),
-                  style: primaryTextStyle())).paddingBottom(4).visible(
-                  shippingData.userName
-                      .trim()
-                      .isNotEmpty),
-              Marquee(child: Text(
-                  shippingData.addressLine1.capitalizeFirstLetter(),
-                  style: primaryTextStyle(size: 13))).visible(
-                  shippingData.addressLine1
-                      .trim()
-                      .isNotEmpty),
-              Marquee(child: Text(
-                  shippingData.addressLine2.capitalizeFirstLetter(),
-                  style: primaryTextStyle(size: 13))).visible(
-                  shippingData.addressLine2
-                      .trim()
-                      .isNotEmpty),
-              if (shippingData.city
-                  .trim()
-                  .isNotEmpty)
+              Marquee(
+                      child: Text(shippingData.userName.capitalizeFirstLetter(),
+                          style: primaryTextStyle()))
+                  .paddingBottom(4)
+                  .visible(shippingData.userName.trim().isNotEmpty),
+              Marquee(
+                      child: Text(
+                          shippingData.addressLine1.capitalizeFirstLetter(),
+                          style: primaryTextStyle(size: 13)))
+                  .visible(shippingData.addressLine1.trim().isNotEmpty),
+              Marquee(
+                      child: Text(
+                          shippingData.addressLine2.capitalizeFirstLetter(),
+                          style: primaryTextStyle(size: 13)))
+                  .visible(shippingData.addressLine2.trim().isNotEmpty),
+              if (shippingData.city.trim().isNotEmpty)
                 Row(
                   children: [
-                    Text(
-                        '${locale.value.city} : ', style: secondaryTextStyle()),
-                    Marquee(child: Text(
-                        shippingData.city.capitalizeFirstLetter(),
-                        style: primaryTextStyle(size: 13))),
+                    Text('${locale.value.city} : ',
+                        style: secondaryTextStyle()),
+                    Marquee(
+                        child: Text(shippingData.city.capitalizeFirstLetter(),
+                            style: primaryTextStyle(size: 13))),
                   ],
                 ),
-              if (shippingData.state
-                  .trim()
-                  .isNotEmpty)
+              if (shippingData.state.trim().isNotEmpty)
                 Row(
                   children: [
                     Text('${locale.value.state} : ',
                         style: secondaryTextStyle()),
                     Marquee(
                         child: Text(
-                          '${shippingData.state
-                              .capitalizeFirstLetter()}${shippingData.postalCode
-                              .isNotEmpty
-                              ? ' - ${shippingData.postalCode}'
-                              : ''}',
-                          style: primaryTextStyle(size: 13),
-                        )),
+                      '${shippingData.state.capitalizeFirstLetter()}${shippingData.postalCode.isNotEmpty ? ' - ${shippingData.postalCode}' : ''}',
+                      style: primaryTextStyle(size: 13),
+                    )),
                   ],
                 ),
-              if (shippingData.phoneNo
-                  .trim()
-                  .isNotEmpty)
+              if (shippingData.phoneNo.trim().isNotEmpty)
                 Row(
                   children: [
                     Text('${locale.value.contactNumber} : ',
                         style: secondaryTextStyle()),
-                    Marquee(child: Text(shippingData.phoneNo,
-                        style: primaryTextStyle(size: 13))),
+                    Marquee(
+                        child: Text(shippingData.phoneNo,
+                            style: primaryTextStyle(size: 13))),
                   ],
                 ),
-              if (shippingData.alternativePhoneNo
-                  .trim()
-                  .isNotEmpty)
+              if (shippingData.alternativePhoneNo.trim().isNotEmpty)
                 Row(
                   children: [
                     Text('${locale.value.alternativeContactNumber} : ',
                         style: secondaryTextStyle()),
-                    Marquee(child: Text(shippingData.alternativePhoneNo,
-                        style: primaryTextStyle(size: 13))),
+                    Marquee(
+                        child: Text(shippingData.alternativePhoneNo,
+                            style: primaryTextStyle(size: 13))),
                   ],
                 ),
             ],

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'dart:math';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class GreetingsComponent extends StatelessWidget {
   GreetingsComponent({super.key});

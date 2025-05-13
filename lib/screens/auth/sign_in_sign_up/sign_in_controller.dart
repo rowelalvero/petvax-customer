@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 import '../../../utils/local_storage.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class SignInController extends GetxController {
   RxBool isNavigateToDashboard = false.obs;

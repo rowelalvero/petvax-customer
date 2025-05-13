@@ -1,6 +1,6 @@
 import 'package:flutter_html/flutter_html.dart';
 
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class HtmlWidget extends StatelessWidget {
   final String? content;

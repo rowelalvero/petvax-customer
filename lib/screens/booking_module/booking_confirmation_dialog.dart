@@ -3,7 +3,7 @@
 import 'package:get/get.dart';
 import '../../configs.dart';
 
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ConfirmBookingDialog extends StatelessWidget {
   RxBool isAgree = false.obs;

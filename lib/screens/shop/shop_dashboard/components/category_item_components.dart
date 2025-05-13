@@ -1,16 +1,19 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class CategoryItemComponents extends StatelessWidget {
   final double? width;
   final CategoryData categoryData;
 
-  const CategoryItemComponents({super.key, required this.categoryData, this.width});
+  const CategoryItemComponents(
+      {super.key, required this.categoryData, this.width});
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width ?? Get.width / 3 - 20,
       padding: EdgeInsets.zero,
-      decoration: boxDecorationWithRoundedCorners(backgroundColor: context.cardColor),
+      decoration:
+          boxDecorationWithRoundedCorners(backgroundColor: context.cardColor),
       child: Column(
         children: [
           CachedImageWidget(

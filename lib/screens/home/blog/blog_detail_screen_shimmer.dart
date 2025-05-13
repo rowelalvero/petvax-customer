@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class BlogDetailScreenShimmer extends StatelessWidget {
   const BlogDetailScreenShimmer({Key? key}) : super(key: key);

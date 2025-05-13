@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class CategoryItemComponentsShimmer extends StatelessWidget {
   const CategoryItemComponentsShimmer({Key? key}) : super(key: key);
 
@@ -14,14 +15,16 @@ class CategoryItemComponentsShimmer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ShimmerWidget(
-            baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+            baseColor:
+                isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 38, horizontal: 16),
               decoration: boxDecorationDefault(),
             ),
           ),
           ShimmerWidget(
-            baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+            baseColor:
+                isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
               decoration: boxDecorationDefault(),

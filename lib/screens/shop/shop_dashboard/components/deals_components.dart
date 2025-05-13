@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class DealsComponents extends StatelessWidget {
   final List<ProductItemData> discountProductList;
 
@@ -19,16 +20,20 @@ class DealsComponents extends StatelessWidget {
           label: locale.value.dealsForYou,
           onTap: () {
             hideKeyboard(context);
-            Get.to(() => ProductListScreen(title: locale.value.dealsForYou), arguments: ProductStatusModel(isDeal: "1"));
+            Get.to(() => ProductListScreen(title: locale.value.dealsForYou),
+                arguments: ProductStatusModel(isDeal: "1"));
           },
         ).paddingOnly(left: 16, right: 8),
         8.height,
         HorizontalList(
           itemCount: discountProductList.length,
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 30),
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 30),
           crossAxisAlignment: WrapCrossAlignment.start,
           itemBuilder: (context, i) {
-            return ProductItemComponents(productListData: discountProductList[i]).paddingRight(8);
+            return ProductItemComponents(
+                    productListData: discountProductList[i])
+                .paddingRight(8);
           },
         )
       ],

@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import '../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class WishListApis {
   static Future<bool> addToWishList({required int productId}) async {
     try {
-      final res = BaseResponseModel.fromJson(await handleResponse(await buildHttpResponse(
+      final res = BaseResponseModel.fromJson(
+          await handleResponse(await buildHttpResponse(
         APIEndPoints.addToWishList,
         method: HttpMethodType.POST,
         request: {ProductModelKey.productId: productId},
@@ -19,7 +21,9 @@ class WishListApis {
   static Future<bool> removeFromWishList({required int productId}) async {
     try {
       final res = BaseResponseModel.fromJson(await handleResponse(
-        await buildHttpResponse('${APIEndPoints.removeWishList}?product_id=$productId', method: HttpMethodType.GET),
+        await buildHttpResponse(
+            '${APIEndPoints.removeWishList}?product_id=$productId',
+            method: HttpMethodType.GET),
       ));
       return res.status;
     } catch (e) {
@@ -30,7 +34,8 @@ class WishListApis {
 
   static Future<bool> onTapFavourite({required ProductItemData favdata}) async {
     bool isRemoved = false;
-    final productId = favdata.productId.isNegative ? favdata.id : favdata.productId;
+    final productId =
+        favdata.productId.isNegative ? favdata.id : favdata.productId;
     if (favdata.inWishlist.value) {
       bool success = await removeFromWishList(productId: productId);
       if (success) {

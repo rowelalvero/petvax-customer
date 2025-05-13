@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
 import 'package:get/get.dart';
 import '../configs.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class PayPalService {
   static Future paypalCheckOut(

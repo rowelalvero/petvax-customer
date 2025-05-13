@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class PetService {
   static Future<List<ChoosePetModel>> getPetTypeApi({

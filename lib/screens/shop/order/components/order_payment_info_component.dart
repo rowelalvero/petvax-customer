@@ -1,4 +1,4 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class OrderPaymentInfoComponent extends StatelessWidget {
   final OrderListData orderData;
@@ -14,24 +14,26 @@ class OrderPaymentInfoComponent extends StatelessWidget {
         8.height,
         Container(
           decoration: boxDecorationDefault(color: context.cardColor),
-          padding: const EdgeInsets.only(
-              left: 16, right: 16, top: 16, bottom: 8),
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               /// Subtotal
-              detailWidgetPrice(title: locale.value.subtotal,
+              detailWidgetPrice(
+                  title: locale.value.subtotal,
                   value: orderData.orderDetails.productPrice,
                   textColor: textPrimaryColorGlobal),
 
               /// Total Tax Amount
-              detailWidgetPrice(title: locale.value.tax,
+              detailWidgetPrice(
+                  title: locale.value.tax,
                   value: orderData.orderDetails.productDetails.taxAmount,
                   textColor: textPrimaryColorGlobal),
 
               /// Delivery Charge
-              detailWidgetPrice(title: locale.value.deliveryCharge,
+              detailWidgetPrice(
+                  title: locale.value.deliveryCharge,
                   value: orderData.logisticCharge,
                   textColor: textPrimaryColorGlobal),
 

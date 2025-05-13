@@ -1,5 +1,5 @@
 
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 class AppCommonDialog extends StatelessWidget {
   final String title;
   final Widget child;

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class OrderPaymentScreen extends StatelessWidget {
   const OrderPaymentScreen({Key? key}) : super(key: key);
 
@@ -25,23 +26,56 @@ class OrderPaymentScreen extends StatelessWidget {
                   children: [
                     commonDivider,
                     8.height,
-                    Text(locale.value.choosePaymentMethod, style: primaryTextStyle()).paddingSymmetric(horizontal: 16),
+                    Text(locale.value.choosePaymentMethod,
+                            style: primaryTextStyle())
+                        .paddingSymmetric(horizontal: 16),
                     8.height,
-                    Text(locale.value.chooseYourConvenientPaymentOptions, style: secondaryTextStyle()).paddingSymmetric(horizontal: 16),
+                    Text(locale.value.chooseYourConvenientPaymentOptions,
+                            style: secondaryTextStyle())
+                        .paddingSymmetric(horizontal: 16),
                     32.height,
                     cashAfterService(context),
-                    stripePaymentWidget(context).paddingTop(8).visible(appConfigs.value.stripePay.stripePublickey.isNotEmpty && appConfigs.value.stripePay.stripeSecretkey.isNotEmpty),
-                    razorPaymentWidget(context).paddingTop(8).visible(appConfigs.value.razorPay.razorpaySecretkey.isNotEmpty),
-                    payStackPaymentWidget(context).paddingTop(8).visible(appConfigs.value.paystackPay.paystackPublickey.isNotEmpty && appConfigs.value.paystackPay.paystackSecretkey.isNotEmpty),
-                    payPalPaymentWidget(context).paddingTop(8).visible(appConfigs.value.paypalPay.paypalSecretkey.isNotEmpty),
-                    flutterWavePaymentWidget(context).paddingTop(8).visible(appConfigs.value.flutterwavePay.flutterwaveSecretkey.isNotEmpty && appConfigs.value.flutterwavePay.flutterwavePublickey.isNotEmpty),
-                    airtelMoneyPaymentWidget(context).paddingTop(8).visible(appConfigs.value.airtelMoney.airtelClientid.isNotEmpty && appConfigs.value.airtelMoney.airtelSecretkey.isNotEmpty),
+                    stripePaymentWidget(context).paddingTop(8).visible(
+                        appConfigs.value.stripePay.stripePublickey.isNotEmpty &&
+                            appConfigs
+                                .value.stripePay.stripeSecretkey.isNotEmpty),
+                    razorPaymentWidget(context).paddingTop(8).visible(
+                        appConfigs.value.razorPay.razorpaySecretkey.isNotEmpty),
+                    payStackPaymentWidget(context).paddingTop(8).visible(
+                        appConfigs.value.paystackPay.paystackPublickey
+                                .isNotEmpty &&
+                            appConfigs.value.paystackPay.paystackSecretkey
+                                .isNotEmpty),
+                    payPalPaymentWidget(context).paddingTop(8).visible(
+                        appConfigs.value.paypalPay.paypalSecretkey.isNotEmpty),
+                    flutterWavePaymentWidget(context).paddingTop(8).visible(
+                        appConfigs.value.flutterwavePay.flutterwaveSecretkey
+                                .isNotEmpty &&
+                            appConfigs.value.flutterwavePay.flutterwavePublickey
+                                .isNotEmpty),
+                    airtelMoneyPaymentWidget(context).paddingTop(8).visible(
+                        appConfigs
+                                .value.airtelMoney.airtelClientid.isNotEmpty &&
+                            appConfigs
+                                .value.airtelMoney.airtelSecretkey.isNotEmpty),
                     phonePayPaymentWidget(context).paddingTop(8).visible(
-                          appConfigs.value.phonepe.phonepeAppId.isNotEmpty && appConfigs.value.phonepe.phonepeMerchantId.isNotEmpty && appConfigs.value.phonepe.phonepeSaltKey.isNotEmpty && appConfigs.value.phonepe.phonepeSaltIndex.isNotEmpty,
+                          appConfigs.value.phonepe.phonepeAppId.isNotEmpty &&
+                              appConfigs
+                                  .value.phonepe.phonepeMerchantId.isNotEmpty &&
+                              appConfigs
+                                  .value.phonepe.phonepeSaltKey.isNotEmpty &&
+                              appConfigs
+                                  .value.phonepe.phonepeSaltIndex.isNotEmpty,
                         ),
-                    midtransPay(context).paddingTop(8).visible(appConfigs.value.midtransPay.midtransClientId.isNotEmpty),
-                    sadadPay(context).paddingTop(8).visible(appConfigs.value.sadadPay.sadadSecretKey.isNotEmpty && appConfigs.value.sadadPay.sadadId.isNotEmpty && appConfigs.value.sadadPay.sadadDomain.isNotEmpty),
-                    cinetPay(context).paddingTop(8).visible(appConfigs.value.cinetPay.siteId.isNotEmpty && appConfigs.value.cinetPay.cinetPayAPIKey.isNotEmpty),
+                    midtransPay(context).paddingTop(8).visible(appConfigs
+                        .value.midtransPay.midtransClientId.isNotEmpty),
+                    sadadPay(context).paddingTop(8).visible(
+                        appConfigs.value.sadadPay.sadadSecretKey.isNotEmpty &&
+                            appConfigs.value.sadadPay.sadadId.isNotEmpty &&
+                            appConfigs.value.sadadPay.sadadDomain.isNotEmpty),
+                    cinetPay(context).paddingTop(8).visible(appConfigs
+                            .value.cinetPay.siteId.isNotEmpty &&
+                        appConfigs.value.cinetPay.cinetPayAPIKey.isNotEmpty),
                     32.height,
                   ],
                 ),

@@ -1,4 +1,5 @@
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 /// Model class for walkthrough
 class WalkThroughElementModel {
   String? title;

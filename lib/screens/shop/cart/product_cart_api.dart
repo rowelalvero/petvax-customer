@@ -1,5 +1,5 @@
 import '../shop_dashboard/model/product_list_response.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class ProductCartApi {
   static Future<CartListResponse> addToCart(request) async {

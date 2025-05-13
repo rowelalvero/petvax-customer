@@ -1,11 +1,13 @@
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class PetSitterItemComponentShimmer extends StatelessWidget {
   final double width;
   final double height;
 
-  const PetSitterItemComponentShimmer({super.key, this.width = 130, this.height = 160});
+  const PetSitterItemComponentShimmer(
+      {super.key, this.width = 130, this.height = 160});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +22,19 @@ class PetSitterItemComponentShimmer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ShimmerWidget(
-                baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+                baseColor: isDarkMode.value
+                    ? shimmerDarkBaseColor
+                    : shimmerLightBaseColor,
                 child: const CircleWidget(height: 88, width: 88),
               ),
               16.height,
               ShimmerWidget(
-                baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+                baseColor: isDarkMode.value
+                    ? shimmerDarkBaseColor
+                    : shimmerLightBaseColor,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
                   decoration: boxDecorationDefault(),
                 ),
               ).paddingSymmetric(horizontal: 16),
@@ -36,12 +43,16 @@ class PetSitterItemComponentShimmer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ShimmerWidget(
-                    baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+                    baseColor: isDarkMode.value
+                        ? shimmerDarkBaseColor
+                        : shimmerLightBaseColor,
                     child: const CircleWidget(height: 36, width: 36),
                   ),
                   16.width,
                   ShimmerWidget(
-                    baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+                    baseColor: isDarkMode.value
+                        ? shimmerDarkBaseColor
+                        : shimmerLightBaseColor,
                     child: const CircleWidget(height: 36, width: 36),
                   )
                 ],
@@ -49,8 +60,10 @@ class PetSitterItemComponentShimmer extends StatelessWidget {
             ],
           ).paddingSymmetric(horizontal: 8, vertical: 14),
           ShimmerWidget(
-            baseColor: isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
-            child: Container(width: Get.width * 0.42, decoration: boxDecorationDefault()),
+            baseColor:
+                isDarkMode.value ? shimmerDarkBaseColor : shimmerLightBaseColor,
+            child: Container(
+                width: Get.width * 0.42, decoration: boxDecorationDefault()),
           ),
         ],
       ),

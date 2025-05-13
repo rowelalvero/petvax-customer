@@ -1,5 +1,5 @@
 import '../../dashboard/dashboard_res_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 class BookingDetailRes {
   bool status;

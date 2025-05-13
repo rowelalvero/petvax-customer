@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../configs.dart';
 import '../utils/local_storage.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
 
 Map<String, String> buildHeaderTokens({
   Map? extraKeys,

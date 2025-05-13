@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
 import 'model/category_model.dart';
-import 'package:pawlly/utils/library.dart';
+import 'package:petvax/utils/library.dart';
+
 class ShopDashboardController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isRefresh = false.obs;
 
-  Rx<Future<DashboardShopRes>> getDashboardDetail = Future(() => DashboardShopRes(shopDashData: DashboardShopModel())).obs;
-  Rx<DashboardShopRes> shopdashboardData = DashboardShopRes(shopDashData: DashboardShopModel()).obs;
+  Rx<Future<DashboardShopRes>> getDashboardDetail =
+      Future(() => DashboardShopRes(shopDashData: DashboardShopModel())).obs;
+  Rx<DashboardShopRes> shopdashboardData =
+      DashboardShopRes(shopDashData: DashboardShopModel()).obs;
 
   final ProductListController pCont = ProductListController();
 
